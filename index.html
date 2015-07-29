@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="resource/css/angular-material.min.css">
+
 	</head>
-	<body ng-app="login">
-		<script type="text/javascript" src="angular-ui-router.min.js"></script>
-		<script type="text/javascript" src="angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="angular-resource.min.js"></script>
-		<script type="text/javascript" src="angular-resource.min.css"></script>
-
-		<div style="width:800px; margin:0 auto;">
-			<form name="loginForm" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.response(loginCtrl.loginRequest)" novalidate>
-				<h4>Usuario:</h4>
-				<fieldset>
-					<input ng-model="loginCtrl.loginRequest.username" placeholder="Escriba su nombre de usuario" title="Username" required></input>
-				</fieldset><br>
-				<h4>Contraseña:</h4>
-				<fieldset>
-					<input ng-model="loginCtrl.loginRequest.password" placeholder="Escriba su contraseña" title="Password" type="password" required></input>
-				</fieldset><br>
-
-				<fieldset class="form-group">
-					<input type="submit" class="btn btn-primary pull-left" value="Iniciar Sesión" />
-				</fieldset>
-			</form>
+	<body ng-app="hxplus">
+		
+		<!-- Vista Dinámica -->
+		<div ui-view>
 		</div>
+
+		<!-- Js -->
+		<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular-resource.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular-animate.min.js"></script>
+    	<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular-aria.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular-material.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="resource/js/angular/angular-ui-router.min.js"></script>
+
+		<!-- Mis scripts -->
+		<script type="text/javascript" src="app/app.js"></script>
+		<script type="text/javascript" src="app/login/loginController.js"></script>
+
 	</body>
 </html>
