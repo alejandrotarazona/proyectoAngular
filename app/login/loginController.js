@@ -1,10 +1,12 @@
 (function(){
-	hxplus.controller('LoginController', function($resource,$state){
-		var login = $resource('http\://localhost\:8080/occupational/login');
+	hxplus.controller('LoginController', function($resource,$state, LoginRepository){
+
 		this.response = function(loginRequest){
-			login.save(loginRequest).$promise.then(function(data){
+			
+			LoginRepository.login.save(loginRequest).$promise.then(function(data){
 				console.log(data);
-				$state.go('home');
+				localStorage.user = JSON.stringify(data);
+				$state.go('home.main', {id: data.id});
 			});
 		};
 	});

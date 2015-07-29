@@ -1,5 +1,40 @@
 <!-- Barra de Navegación -->
-HOME
+<md-content ng-controller="HomeController as home" layout-margin layout-fill layout-padding>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+      	<div flex>
+	        <a ui-sref="home.main">
+	          <span>HxPlus </span>
+	        </a>
+        </div>
+    	<div flex>
+	        <a ui-sref="home.prueba">
+	        	<span>1er Boton </span>
+	        </a>
+        </div>
+    	<div flex>
+	        <a ui-sref="home.main">
+	        	<span>2do Boton </span>
+	        </a>
+        </div>
+    	<div flex>
+	        <a ui-sref="home.main">
+	        	<span>3er Boton </span>
+	        </a>
+        </div>
+        <span flex="55"></span>
+        <div flex>
+        	<a ui-sref="home.main">
+        		<span>{{home.user.firstName + " " + home.user.lastName}} </span>
+        	</a>
+	    </div>    
+
+        <md-button class="md-button" ui-sref="login" flex>
+          Logout
+        </md-button>
+      </div>
+    </md-toolbar>
+</md-content>
 
 <!-- Nuevo UI-View -->
 <div ui-view>
