@@ -1,5 +1,5 @@
 (function(){
-	hxplus.controller('LoginController', function($resource,$state, LoginRepository){
+	hxplus.controller('LoginController', function($state, LoginRepository){
 
 		this.response = function(loginRequest){
 			

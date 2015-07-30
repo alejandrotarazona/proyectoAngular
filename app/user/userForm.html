@@ -1,0 +1,53 @@
+<div layout="column" ng-controller="UserFormController as userCtrl" layout-margin layout-fill layout-padding>
+
+	<div layout="row" layout-align="center center">
+		<md-content flex flex-order="1">
+		</md-content>
+		<md-content  layout="column" layout-sm="column" flex-order="2" layout-align="center start" layout-margin layout-padding>
+			<form name="userForm" ng-submit="userCtrl.response(userCtrl.userRequest)" flex novalidate>
+
+				<md-input-container>
+					<label>{{userCtrl.user.username}}</label>
+					<input ng-model="userCtrl.userRequest.username" title="Username" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label>{{userCtrl.user.firstName}}</label>
+					<input ng-model="userCtrl.userRequest.firstName" title="Username" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label>{{userCtrl.user.lastName}}</label>
+					<input ng-model="userCtrl.userRequest.lastName" title="Username" required></input>
+				</md-input-container>
+				
+				<md-input-container>
+					<label>{{userCtrl.user.ci}}</label>
+					<input ng-model="userCtrl.userRequest.ci" title="Username" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label>{{userCtrl.user.rif}}</label>
+					<input ng-model="userCtrl.userRequest.rif" title="Username" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label>{{userCtrl.user.phoneNumber}}</label>
+					<input ng-model="userCtrl.userRequest.phoneNumber" title="Username" required></input>
+				</md-input-container>
+				
+				<md-input-container>
+					<label>{{userCtrl.user.email}}</label>
+					<input ng-model="userCtrl.userRequest.email" title="Username" required></input>
+				</md-input-container>
+
+				<md-button class="md-button" type="submit">
+					Guardar Cambios
+				</md-button>
+			</form>
+			
+		</md-content>
+		<md-content flex flex-order="3">
+		</md-content>
+	</div>
+</div>

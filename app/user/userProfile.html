@@ -1,0 +1,23 @@
+<div layout="column" ng-controller="UserProfileController as userCtrl" layout-margin layout-fill layout-padding>
+
+	<div layout="row" layout-align="center center">
+		<md-content flex flex-order="1">
+		</md-content>
+		<md-content  layout="column" layout-sm="column" flex-order="2" layout-align="center start" layout-margin layout-padding>
+
+			<div>
+				<h1>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}}</h1>
+			</div>
+			<span flex>Nombre de Usuario: {{userCtrl.user.username}}</span>
+			<span flex>CI: {{userCtrl.user.ci | number}}</span>
+			<span flex>RIF: {{userCtrl.user.rif | number}}</span>
+			<span flex>Número de Teléfono: {{userCtrl.user.phoneNumber}}</span>
+			<span flex>Email: {{userCtrl.user.email}}</span>
+<md-button class="md-button" ui-sref="home.userForm" ui-sref-opts="{id:userCtrl.user.id}">
+	Editar
+</md-button>
+		</md-content>
+		<md-content flex flex-order="3">
+		</md-content>
+	</div>
+</div>

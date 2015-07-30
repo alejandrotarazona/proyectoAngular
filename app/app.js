@@ -22,6 +22,16 @@ var hxplus;
             templateUrl: 'app/main/main.html'
         });
 
+        $stateProvider.state('home.userProfile',{
+            url: '/userProfile/:id',
+            templateUrl: 'app/user/userProfile.html'
+        });
+
+        $stateProvider.state('home.userForm',{
+            url: 'userForm/:id',
+            templateUrl: 'app/user/userForm.html'
+        });
+
         //===== ESTADO DE PRUEBA PARA NUEVAS REFERENCIAS NO IMPLEMENTADAS =====//
         $stateProvider.state('home.prueba',{
             url: '/prueba',
