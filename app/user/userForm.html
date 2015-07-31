@@ -4,41 +4,46 @@
 		<md-content flex flex-order="1">
 		</md-content>
 		<md-content  layout="column" layout-sm="column" flex-order="2" layout-align="center start" layout-margin layout-padding>
-			<form name="userForm" ng-submit="userCtrl.response(userCtrl.userRequest)" flex novalidate>
+			<form ng-submit="userCtrl.submit(userCtrl.user)" flex>
 
 				<md-input-container>
-					<label>{{userCtrl.user.username}}</label>
-					<input ng-model="userCtrl.userRequest.username" title="Username" required></input>
+					<label>Nombre de Usuario</label>
+					<input ng-model="userCtrl.user.username" title="Username"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>{{userCtrl.user.firstName}}</label>
-					<input ng-model="userCtrl.userRequest.firstName" title="Username" required></input>
+					<label>Nombre</label>
+					<input ng-model="userCtrl.user.firstName"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>{{userCtrl.user.lastName}}</label>
-					<input ng-model="userCtrl.userRequest.lastName" title="Username" required></input>
+					<label>Apellido</label>
+					<input ng-model="userCtrl.user.lastName"></input>
 				</md-input-container>
 				
 				<md-input-container>
-					<label>{{userCtrl.user.ci}}</label>
-					<input ng-model="userCtrl.userRequest.ci" title="Username" required></input>
+					<label>Cédula de Identidad</label>
+					<input ng-model="userCtrl.user.ci"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>{{userCtrl.user.rif}}</label>
-					<input ng-model="userCtrl.userRequest.rif" title="Username" required></input>
+					<label>RIF</label>
+					<input ng-model="userCtrl.user.rif"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>{{userCtrl.user.phoneNumber}}</label>
-					<input ng-model="userCtrl.userRequest.phoneNumber" title="Username" required></input>
+					<label>Número de Teléfono</label>
+					<input ng-model="userCtrl.user.phoneNumber"></input>
 				</md-input-container>
 				
 				<md-input-container>
-					<label>{{userCtrl.user.email}}</label>
-					<input ng-model="userCtrl.userRequest.email" title="Username" required></input>
+					<label>Correo Eletrónico</label>
+					<input ng-model="userCtrl.user.email"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label>Dirección</label>
+					<input ng-model="userCtrl.user.address" title="Username"></input>
 				</md-input-container>
 
 				<md-button class="md-button" type="submit">

@@ -23,15 +23,32 @@
 	        </a>
         </div>
         <span flex></span>
+
+        <!-- Administración de Perfil -->
         <div flex=>
         	<a ui-sref="home.userProfile" ui-sref-opts="{id: home.user.id}">
         		<span>{{home.user.firstName}} {{home.user.lastName}}</span>
         	</a>   
 	    </div>    
 
-        <md-button class="md-button" ui-sref="login" flex>
-          Logout
-        </md-button>
+        <!-- Menu Sttings -->
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
+            <ng-md-icon icon="settings" style="fill: white"></md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="item in [1, 2, 3]">
+              <md-button ng-click="home.announceClick($index)">
+                <p>Option {{item}}</p>
+                <md-icon md-menu-align-target md-svg-icon="settings"></md-icon>
+              </md-button>
+            </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-button ui-sref="login">Cerrar Sesión</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
       </div>
     </md-toolbar>
 </md-content>

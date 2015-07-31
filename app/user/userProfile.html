@@ -13,9 +13,11 @@
 			<span flex>RIF: {{userCtrl.user.rif | number}}</span>
 			<span flex>Número de Teléfono: {{userCtrl.user.phoneNumber}}</span>
 			<span flex>Email: {{userCtrl.user.email}}</span>
-<md-button class="md-button" ui-sref="home.userForm" ui-sref-opts="{id:userCtrl.user.id}">
-	Editar
-</md-button>
+			<span flex>Dirección: {{userCtrl.user.address}}</span>
+
+			<md-button class="md-button" ui-sref="home.userForm" ui-sref-opts="{id:userCtrl.user.id}">
+				Editar
+			</md-button>
 		</md-content>
 		<md-content flex flex-order="3">
 		</md-content>

@@ -1,13 +1,18 @@
 (function(){
-	hxplus.controller('UserFormcontroller', function($stateParams, UserRepository){
+	hxplus.controller('UserFormController', function($state, $stateParams, UserRepository){
 		this.user = UserRepository.user.get({id: $stateParams.id});
 
-		this.response = function(userRequest){
-			UserRepository.user.update({id:this.user.id}, userRequest).$promise.then(function(data){
-				console.log(data);
-				localStorage.user = JSON.stringify(data);
-				$state.go('home.userProfile', {id: data.id});
-			});		
+		this.submit = function(userRequest){
+			UserRepository.user.update({id:userRequest.id}, userRequest).$promise.then(function(data){
+					localStorage.user = JSON.stringify(data);
+					//$state.go('home',{id: data.id})
+					$state.transitionTo('home.userProfile', {id: data.id},
+					{
+						reload:true,
+					}
+						);
+				}
+			);		
 		};
-	}
+	})
 })()

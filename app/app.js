@@ -1,7 +1,8 @@
 var hxplus;
 
 (function(){
-    hxplus = angular.module('hxplus', ['ui.router','ngResource','ngMaterial']);
+    hxplus = angular.module('hxplus', ['ui.router','ngResource',
+        'ngMaterial','ngMdIcons','pascalprecht.translate']);
 
     hxplus.config(function($stateProvider, $urlRouterProvider){
 
