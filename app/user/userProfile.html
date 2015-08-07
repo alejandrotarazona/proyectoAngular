@@ -8,15 +8,15 @@
 			<div>
 				<h1>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}}</h1>
 			</div>
-			<span flex>Nombre de Usuario: {{userCtrl.user.username}}</span>
-			<span flex>CI: {{userCtrl.user.ci | number}}</span>
-			<span flex>RIF: {{userCtrl.user.rif | number}}</span>
-			<span flex>Número de Teléfono: {{userCtrl.user.phoneNumber}}</span>
-			<span flex>Email: {{userCtrl.user.email}}</span>
-			<span flex>Dirección: {{userCtrl.user.address}}</span>
+			<p><span flex translate="profile.username"></span>: {{userCtrl.user.username}}</p>			
+			<p><span flex translate="profile.ci"></span>: {{userCtrl.user.ci | number}}</p>
+			<p><span flex translate="profile.rif"></span>: {{userCtrl.user.rif | number}}</p>
+			<p><span flex translate="profile.phone"></span>: {{userCtrl.user.phoneNumber}}</p>
+			<p><span flex translate="profile.email"></span>: {{userCtrl.user.email}}</p>
+			<p><span flex translate="profile.address"></span>: {{userCtrl.user.address}}</p>
+			
 
-			<md-button class="md-button" ui-sref="home.userForm" ui-sref-opts="{id:userCtrl.user.id}">
-				Editar
+			<md-button class="md-button" ui-sref="home.userForm" ui-sref-opts="{id:userCtrl.user.id}" translate="profile.edit" flex>
 			</md-button>
 		</md-content>
 		<md-content flex flex-order="3">

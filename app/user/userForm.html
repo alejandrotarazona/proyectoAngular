@@ -7,47 +7,46 @@
 			<form ng-submit="userCtrl.submit(userCtrl.user)" flex>
 
 				<md-input-container>
-					<label>Nombre de Usuario</label>
+					<label translate>profile-edit.username</label>
 					<input ng-model="userCtrl.user.username" title="Username"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>Nombre</label>
+					<label translate>profile-edit.first-name</label>
 					<input ng-model="userCtrl.user.firstName"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>Apellido</label>
+					<label translate>profile-edit.last-name</label>
 					<input ng-model="userCtrl.user.lastName"></input>
 				</md-input-container>
 				
 				<md-input-container>
-					<label>Cédula de Identidad</label>
+					<label translate>profile-edit.ci</label>
 					<input ng-model="userCtrl.user.ci"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>RIF</label>
+					<label translate>profile-edit.rif</label>
 					<input ng-model="userCtrl.user.rif"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>Número de Teléfono</label>
+					<label translate>profile-edit.phone</label>
 					<input ng-model="userCtrl.user.phoneNumber"></input>
 				</md-input-container>
 				
 				<md-input-container>
-					<label>Correo Eletrónico</label>
+					<label translate>profile-edit.email</label>
 					<input ng-model="userCtrl.user.email"></input>
 				</md-input-container>
 
 				<md-input-container>
-					<label>Dirección</label>
+					<label translate>profile-edit.address</label>
 					<input ng-model="userCtrl.user.address" title="Username"></input>
 				</md-input-container>
 
-				<md-button class="md-button" type="submit">
-					Guardar Cambios
+				<md-button class="md-button" type="submit" translate="profile-edit.save">
 				</md-button>
 			</form>
 			

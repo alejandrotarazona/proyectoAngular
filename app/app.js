@@ -4,7 +4,7 @@ var hxplus;
     hxplus = angular.module('hxplus', ['ui.router','ngResource',
         'ngMaterial','ngMdIcons','pascalprecht.translate']);
 
-    hxplus.config(function($stateProvider, $urlRouterProvider){
+    hxplus.config(function($stateProvider, $urlRouterProvider, $translateProvider){
 
         $urlRouterProvider.otherwise('/login')
 
@@ -38,5 +38,15 @@ var hxplus;
             url: '/prueba',
             templateUrl: 'prueba.html'
         });
+
+        //===== CONFIGURACION DE TRADUCCIONES ====//
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'data/',
+            suffix: '.json'
+        });
+        $translateProvider.preferredLanguage('es_VE');
+        $translateProvider.useSanitizeValueStrategy('escape');
     });
+
+    
 })()

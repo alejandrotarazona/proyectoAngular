@@ -9,17 +9,17 @@
         </div>
     	<div flex>
 	        <a ui-sref="home.prueba">
-	        	<span>1er Boton </span>
+	        	<span translate>home-bar.1stbutton</span>
 	        </a>
         </div>
     	<div flex>
 	        <a ui-sref="home.main">
-	        	<span>2do Boton </span>
+	        	<span translate>home-bar.2ndbutton</span>
 	        </a>
         </div>
     	<div flex>
 	        <a ui-sref="home.main">
-	        	<span>3er Boton </span>
+	        	<span translate>home-bar.3rdbutton</span>
 	        </a>
         </div>
         <span flex></span>
@@ -32,23 +32,35 @@
 	    </div>    
 
         <!-- Menu Sttings -->
-        <md-menu md-position-mode="target-right target">
-          <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
-            <ng-md-icon icon="settings" style="fill: white"></md-icon>
-          </md-button>
-          <md-menu-content width="4">
-            <md-menu-item ng-repeat="item in [1, 2, 3]">
-              <md-button ng-click="home.announceClick($index)">
-                <p>Option {{item}}</p>
-                <md-icon md-menu-align-target md-svg-icon="settings"></md-icon>
-              </md-button>
-            </md-menu-item>
-             <md-menu-divider></md-menu-divider>
-            <md-menu-item>
-                <md-button ui-sref="login">Cerrar Sesión</md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
+        <div layout="column" layout-align="center center">
+          <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
+              <ng-md-icon icon="settings" style="fill: white"></md-icon>
+            </md-button>
+            <md-menu-content width="2">
+              <md-menu-item ng-repeat="item in [1, 2, 3]">
+                <md-button ng-click="home.announceClick($index)" translate>
+                  <p><span translate="home-bar.settings.option"></span> {{item}}</p>
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button aria-label="ESP" ng-click="home.switchLanguage('es_VE')">
+                  <span class="flag-icon flag-icon-ve"></span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button aria-label="ENG" ng-click="home.switchLanguage('en_US')">
+                  <span class="flag-icon flag-icon-us"></span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                  <md-button aria-label="home-bar.settings.logout" ui-sref="login" translate="home-bar.settings.logout"></md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
       </div>
     </md-toolbar>
 </md-content>

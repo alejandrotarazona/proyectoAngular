@@ -1,0 +1,34 @@
+{
+	"home-bar"	:{
+		"1stbutton" 	: "1er Botón",
+		"2ndbutton" 	: "2do Botón",
+		"3rdbutton" 	: "3er Botón",
+		"settings"		: {
+			"option"	: "Opción",
+			"language"	: "Idioma",
+			"logout"	: "Cerrar Sesión"
+		}
+	},
+
+	"profile"	:{
+		"username"	: "Nombre de Usuario",
+		"ci"		: "Cédula de Identidad",
+		"rif"		: "Número de RIF",
+		"phone"		: "Número de Teléfono",
+		"email"		: "Correo Electrónico",
+		"address"	: "Dirección",
+		"edit"		: "Editar"
+	},
+
+	"profile-edit"	:{
+		"username"		: "@:profile.username",
+		"ci"			: "@:profile.ci",
+		"rif"			: "@:profile.rif",
+		"phone"			: "@:profile.phone",
+		"email"			: "@:profile.email",
+		"address"		: "@:profile.address",
+		"first-name"	: "Nombre",
+		"last-name"		: "Apellido",
+		"save"			: "Guardar Cambios"
+	}
+}

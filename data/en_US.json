@@ -1,0 +1,33 @@
+{
+	"home-bar"	:{
+		"1stbutton" 	: "1st Button",
+		"2ndbutton" 	: "2nd Button",
+		"3rdbutton" 	: "3rd Button",
+		"settings"		: {
+			"option"	: "Option",
+			"logout"	: "Logout"
+		}
+	},
+
+	"profile"	:{
+		"username"	: "Username",
+		"ci"		: "ID number",
+		"rif"		: "RIF number",
+		"phone"		: "Phone number",
+		"email"		: "Email",
+		"address"	: "Address",
+		"edit"		: "Edit"
+	},
+
+	"profile-edit"	:{
+		"username"		: "@:profile.username",
+		"ci"			: "@:profile.ci",
+		"rif"			: "@:profile.rif",
+		"phone"			: "@:profile.phone",
+		"email"			: "@:profile.email",
+		"address"		: "@:profile.address",
+		"first-name"	: "First name",
+		"last-name"		: "Last name",
+		"save"			: "Save changes"
+	}
+}
