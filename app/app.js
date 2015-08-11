@@ -2,8 +2,9 @@ var hxplus;
 
 (function(){
     hxplus = angular.module('hxplus', ['ui.router','ngResource',
-        'ngMaterial','ngMdIcons','pascalprecht.translate']);
+        'ngMaterial','ngMdIcons','pascalprecht.translate','angular-jwt']);
 
+    //===== CONFIGURACION DE APP. 1ER PPASO: REDIRECCIONAMIENTOS ====//
     hxplus.config(function($stateProvider, $urlRouterProvider, $translateProvider){
 
         $urlRouterProvider.otherwise('/login')
@@ -39,14 +40,19 @@ var hxplus;
             templateUrl: 'prueba.html'
         });
 
+        $stateProvider.state('html',{
+            url: '/pruebahtml',
+            templateUrl: '/pruebahtml.html'
+        });
+
         //===== CONFIGURACION DE TRADUCCIONES ====//
         $translateProvider.useStaticFilesLoader({
             prefix: 'data/',
             suffix: '.json'
         });
+
         $translateProvider.preferredLanguage('es_VE');
         $translateProvider.useSanitizeValueStrategy('escape');
-    });
 
-    
+    });
 })()

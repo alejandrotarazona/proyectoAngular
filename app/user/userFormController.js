@@ -7,10 +7,10 @@
 					localStorage.user = JSON.stringify(data);
 					//$state.go('home',{id: data.id})
 					$state.transitionTo('home.userProfile', {id: data.id},
-					{
-						reload:true,
-					}
-						);
+						{
+							reload:true,
+						}
+					);
 				}
 			);		
 		};
