@@ -54,5 +54,13 @@ var hxplus;
         $translateProvider.preferredLanguage('es_VE');
         $translateProvider.useSanitizeValueStrategy('escape');
 
+        //===== INYECTOR DE HEADER =====//
+
+        hxplus.run(function($http) {
+          $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token;
+        });
+
+        //===== FIN DEL INYECTOR =====//
+
     });
 })()

@@ -1,5 +1,5 @@
 (function(){
-	hxplus.controller('LoginController', function($state, LoginRepository){
+	hxplus.controller('LoginController', function($state,$http,LoginRepository){
 
 		this.submit = function(loginRequest){
 
@@ -7,6 +7,7 @@
 					console.log(data);
 					localStorage.user = JSON.stringify(data.user);
 					localStorage.token = data.token;
+					$http.defaults.headers.common.Authorization = localStorage.token;
 					$state.go('home.main', {id: data.user.id});
 			});
 		};

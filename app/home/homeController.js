@@ -1,6 +1,6 @@
 (function(){
 	hxplus.controller('HomeController', function($stateParams, $state, $mdDialog, 
-			$translate, UserRepository){
+			$translate,$http, UserRepository){
 
 		this.user = UserRepository.user.get({id: $stateParams.id});
 
@@ -15,6 +15,7 @@
 
 		this.logout = function(){
 			localStorage.token = {};
+			$http.defaults.headers.common.Authorization = {};
 			$state.go('login');
 		}
 
