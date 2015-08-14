@@ -15,7 +15,7 @@
 
 		this.logout = function(){
 			localStorage.token = {};
-			$http.defaults.headers.common.Authorization = {};
+			$http.defaults.headers.common.Authorization = '';
 			$state.go('login');
 		}
 
