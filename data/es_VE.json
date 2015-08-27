@@ -3,6 +3,7 @@
 		"1stbutton" 	: "1er Botón",
 		"2ndbutton" 	: "2do Botón",
 		"3rdbutton" 	: "3er Botón",
+		"users"			: "Listar Usuarios",
 		"settings"		: {
 			"option"	: "Opción",
 			"language"	: "Idioma",
@@ -32,7 +33,11 @@
 		"save"			: "Guardar Cambios"
 	},
 
-	"profile-create"	:{
+	"user-list"			:{
+		"create"		: "Crear Nuevo Usuario"
+	},
+
+	"user-create"		:{
 		"username"		: "@:profile.username",
 		"ci"			: "@:profile.ci",
 		"rif"			: "@:profile.rif",
@@ -41,8 +46,22 @@
 		"address"		: "@:profile.address",
 		"password"		: "Contraseña",
 		"repassword"	: "Repita su Contraseña",
-		"first-name"	: "Nombre",
-		"last-name"		: "Apellido",
+		"first-name"	: "@:profile-edit.first-name",
+		"last-name"		: "@:profile-edit.last-name",
 		"save"			: "Guardar Cambios"
+	},
+
+	"user-details"		:{
+		"username"		: "@:profile.username",
+		"ci"			: "@:profile.ci",
+		"rif"			: "@:profile.rif",
+		"phone"			: "@:profile.phone",
+		"email"			: "@:profile.email",
+		"address"		: "@:profile.address",
+		"password"		: "@:user-create.password",
+		"first-name"	: "@:profile-edit.first-name",
+		"last-name"		: "@:profile-edit.last-name",
+		"edit"			: "@:profile.edit",
+		"delete"		: "Borrar Usuario"
 	}
 }

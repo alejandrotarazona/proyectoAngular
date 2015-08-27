@@ -1,0 +1,27 @@
+<div layout="column" ng-controller="UserDetailsController as userCtrl" layout-margin layout-fill layout-padding>
+
+	<div layout="row" layout-align="center center">
+		<md-content flex flex-order="1">
+		</md-content>
+		<md-content  layout="column" layout-sm="column" flex-order="2" layout-align="center start" layout-margin layout-padding>
+
+			<div>
+				<h1>{{userCtrl.user.firstName}} {{userCtrl.user.lastName}}</h1>
+			</div>
+			<p><span flex translate="user-details.username"></span>: {{userCtrl.user.username}}</p>			
+			<p><span flex translate="user-details.ci"></span>: {{userCtrl.user.ci | number}}</p>
+			<p><span flex translate="user-details.rif"></span>: {{userCtrl.user.rif | number}}</p>
+			<p><span flex translate="user-details.phone"></span>: {{userCtrl.user.phoneNumber}}</p>
+			<p><span flex translate="user-details.email"></span>: {{userCtrl.user.email}}</p>
+			<p><span flex translate="user-details.address"></span>: {{userCtrl.user.address}}</p>
+			
+
+			<md-button class="md-button" ui-sref="home.userEdit" ui-sref-opts="{id:userCtrl.user.id}" aria-label="user-details.edit" translate="user-details.edit" flex>
+			</md-button>
+			<md-button class="md-button" ng-click="userCtrl.deleteUser(userCtrl.user.id)" aria-label="user-details.delete" translate="user-details.delete">
+			</md-button>
+		</md-content>
+		<md-content flex flex-order="3">
+		</md-content>
+	</div>
+</div>

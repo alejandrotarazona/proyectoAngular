@@ -7,7 +7,7 @@ var hxplus;
     //===== CONFIGURACION DE APP. 1ER PPASO: REDIRECCIONAMIENTOS ====//
     hxplus.config(function($stateProvider, $urlRouterProvider, $translateProvider){
 
-        $urlRouterProvider.otherwise('/login')
+        $urlRouterProvider.otherwise('/login');
 
         $stateProvider.state('login', {
             url: '/login',
@@ -30,8 +30,28 @@ var hxplus;
         });
 
         $stateProvider.state('home.userForm',{
-            url: 'userForm/:id',
+            url: '/userForm/:id',
             templateUrl: 'app/user/userForm.html'
+        });
+
+        $stateProvider.state('home.userList',{
+            url: '/userList',
+            templateUrl: 'app/user/userList.html'
+        });
+
+        $stateProvider.state('home.userDetails',{
+            url: '/userDetails/:id',
+            templateUrl: 'app/user/userDetails.html'
+        });
+
+        $stateProvider.state('home.userEdit',{
+            url: '/userEdit/:id',
+            templateUrl: 'app/user/userEdit.html'
+        });        
+
+        $stateProvider.state('home.userCreate',{
+            url: '/userCreate',
+            templateUrl: 'app/user/userCreateNew.html'
         });
 
         //===== CONFIGURACION DE TRADUCCIONES ====//

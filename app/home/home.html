@@ -2,34 +2,40 @@
 <md-content ng-controller="HomeController as home" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-      	<div flex>
+      	
+        <div flex>
 	        <a ui-sref="home.main">
 	          <span>HxPlus </span>
 	        </a>
         </div>
-    	<div flex>
-	        <a ui-sref="home.main">
-	        	<span translate>home-bar.1stbutton</span>
-	        </a>
+        <div flex>
+          <a ui-sref="home.userList">
+            <span translate>home-bar.users</span>
+          </a>
         </div>
-    	<div flex>
-	        <a ui-sref="home.main">
-	        	<span translate>home-bar.2ndbutton</span>
-	        </a>
+      	<div flex>
+  	      <a ui-sref="home.main">
+  	      	<span translate>home-bar.1stbutton</span>
+  	      </a>
         </div>
-    	<div flex>
-	        <a ui-sref="home.main">
-	        	<span translate>home-bar.3rdbutton</span>
-	        </a>
+      	<div flex>
+  	      <a ui-sref="home.main">
+  	       	<span translate>home-bar.2ndbutton</span>
+  	      </a>
+        </div>
+      	<div flex>
+  	      <a ui-sref="home.main">
+  	      	<span translate>home-bar.3rdbutton</span>
+  	      </a>
         </div>
         <span flex></span>
 
         <!-- Administración de Perfil -->
-        <div flex=>
-        	<a ui-sref="home.userProfile" ui-sref-opts="{id: home.user.id}">
-        		<span>{{home.user.firstName}} {{home.user.lastName}}</span>
-        	</a>   
-	    </div>    
+          <div flex>
+          	<a ui-sref="home.userProfile" ui-sref-opts="{id: home.user.id}">
+          		<span>{{home.user.firstName}} {{home.user.lastName}}</span>
+          	</a>   
+          </div>    
 
         <!-- Menu Sttings -->
         <div layout="column" layout-align="center center">
