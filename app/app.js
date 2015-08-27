@@ -34,17 +34,6 @@ var hxplus;
             templateUrl: 'app/user/userForm.html'
         });
 
-        //===== ESTADO DE PRUEBA PARA NUEVAS REFERENCIAS NO IMPLEMENTADAS =====//
-        $stateProvider.state('home.prueba',{
-            url: '/prueba',
-            templateUrl: 'prueba.html'
-        });
-
-        $stateProvider.state('html',{
-            url: '/pruebahtml',
-            templateUrl: '/pruebahtml.html'
-        });
-
         //===== CONFIGURACION DE TRADUCCIONES ====//
         $translateProvider.useStaticFilesLoader({
             prefix: 'data/',
@@ -56,10 +45,7 @@ var hxplus;
 
         //===== INYECTOR DE HEADER =====//
 
-        hxplus.run(function($http) {
-          $http.defaults.headers.common.Authorization = 'Bearer ' + localStorage.token;
-        });
-
+        
         //===== FIN DEL INYECTOR =====//
 
     });

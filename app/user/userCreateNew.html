@@ -1,0 +1,67 @@
+<div layout="column" ng-controller="UserCreateController as userCtrl" layout-margin layout-fill layout-padding>
+
+	<div layout="row" layout-align="center center">
+		<md-content flex flex-order="1">
+		</md-content>
+		<md-content  layout="column" layout-sm="column" flex-order="2" layout-align="center start" layout-margin layout-padding>
+			<form ng-submit="userCtrl.submit(userCtrl.user,userCtrl.repassword)" flex>
+
+				<md-input-container>
+					<label translate>profile-create.username</label>
+					<input ng-model="userCtrl.user.username" title="Username"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.password</label>
+					<input ng-model="userCtrl.user.password" title="Username" type="password" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.repassword</label>
+					<input ng-model="userCtrl.repassword" title="Username" type="password" required></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.first-name</label>
+					<input ng-model="userCtrl.user.firstName"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.last-name</label>
+					<input ng-model="userCtrl.user.lastName"></input>
+				</md-input-container>
+				
+				<md-input-container>
+					<label translate>profile-create.ci</label>
+					<input ng-model="userCtrl.user.ci"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.rif</label>
+					<input ng-model="userCtrl.user.rif"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.phone</label>
+					<input ng-model="userCtrl.user.phoneNumber"></input>
+				</md-input-container>
+				
+				<md-input-container>
+					<label translate>profile-create.email</label>
+					<input ng-model="userCtrl.user.email"></input>
+				</md-input-container>
+
+				<md-input-container>
+					<label translate>profile-create.address</label>
+					<input ng-model="userCtrl.user.address" title="Username"></input>
+				</md-input-container>
+
+				<md-button class="md-button" type="submit" aria-label="profile-create.save" translate="profile-create.save">
+				</md-button>
+			</form>
+			
+		</md-content>
+		<md-content flex flex-order="3">
+		</md-content>
+	</div>
+</div>

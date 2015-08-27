@@ -5,7 +5,6 @@
 				{
 					'update':{
 						method:'PUT',
-						headers: { 'token': localStorage.token },
 					}
 				})
 		};

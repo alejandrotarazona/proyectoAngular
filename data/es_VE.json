@@ -30,5 +30,19 @@
 		"first-name"	: "Nombre",
 		"last-name"		: "Apellido",
 		"save"			: "Guardar Cambios"
+	},
+
+	"profile-create"	:{
+		"username"		: "@:profile.username",
+		"ci"			: "@:profile.ci",
+		"rif"			: "@:profile.rif",
+		"phone"			: "@:profile.phone",
+		"email"			: "@:profile.email",
+		"address"		: "@:profile.address",
+		"password"		: "Contraseña",
+		"repassword"	: "Repita su Contraseña",
+		"first-name"	: "Nombre",
+		"last-name"		: "Apellido",
+		"save"			: "Guardar Cambios"
 	}
 }

@@ -1,6 +1,7 @@
 (function(){
 	hxplus.controller('LoginController', function($state,$http,LoginRepository){
-
+		localStorage.user = "";
+		localStorage.token = "";
 		this.submit = function(loginRequest){
 
 			LoginRepository.login.save(loginRequest).$promise.then(function(data){
