@@ -2,9 +2,9 @@
 
 	<md-button class="md-button" ui-sref="home.userCreate" aria-label="user-list.create" translate="user-list.create" flex>
 	</md-button>
-	<div layout="row" layout-align="center center" ng-repeat="user in userCtrl.listUsers">
-		<a ui-sref="home.userDetails" ui-sref-opts="{id: user.id}">
-        	<span>{{user.firstName}} {{user.lastName}}</span>
+	<div layout="row" layout-align="center center" ng-repeat="thisUser in userCtrl.listUsers">
+		<a ui-sref="home.userDetails({id: thisUser.id})" ui-sref-opts="">
+        	<span>{{thisUser.firstName}} {{thisUser.lastName}}</span>
         </a>
 	</div>
 </div>
