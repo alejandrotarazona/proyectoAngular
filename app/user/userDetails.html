@@ -16,9 +16,9 @@
 			<p><span flex translate="user-details.address"></span>: {{userCtrl.userDetails.address}}</p>
 			
 
-			<md-button class="md-button" ui-sref="home.userEdit" ui-sref-opts="{id:userCtrl.userDetails.id}" aria-label="user-details.edit" translate="user-details.edit" flex>
+			<md-button ui-sref="home.userEdit({id:userCtrl.userDetails.id})" aria-label="user-details.edit" translate="user-details.edit" flex>
 			</md-button>
-			<md-button class="md-button" ng-click="userCtrl.deleteUser(userCtrl.userDetails.id)" aria-label="user-details.delete" translate="user-details.delete">
+			<md-button ng-click="userCtrl.deleteUser()" aria-label="user-details.delete" translate="user-details.delete">
 			</md-button>
 		</md-content>
 		<md-content flex flex-order="3">

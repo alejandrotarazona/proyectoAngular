@@ -4,8 +4,9 @@
 			if(passwordAuth == createRequest.password){
 				UserRepository.user.save(createRequest).$promise.then(function(data){
 					//Pop-up de creación exitosa...
-					$state.transitionTo('home.userList',
+					$state.transitionTo('home.userList',{},
 						{
+							inherit:true,
 							reload:true,
 						}
 					);

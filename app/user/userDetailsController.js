@@ -1,12 +1,18 @@
 (function(){
 	hxplus.controller('UserDetailsController',function($stateParams, $state,$http, UserRepository){
-		this.user = UserRepository.user.get({id: $stateParams.id});
+		this.userDetails = UserRepository.user.get({id: $stateParams.id});
+		console.log("Usuario cargado:");
+		console.log(this.userDetails);
+		user = this.userDetails;
 
-		deleteUser = function(user){
-			UserRepository.remove({id: user.id});
+		this.deleteUser = function(){
+			console.log("Entrando a \"deleteUser\"");
+			console.log(user);
+			UserRepository.user.remove({id: user.id});
 			//$state.go('home.');
-			$state.transitionTo('home.listUser',
+			$state.transitionTo('home.userList',{},
 				{
+					inherit:true,
 					reload:true,
 				}
 			);

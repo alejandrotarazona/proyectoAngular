@@ -2,7 +2,7 @@
 	hxplus.controller('HomeController', function($stateParams, $state, $mdDialog, 
 			$translate,$http, UserRepository){
 
-		this.user = UserRepository.user.get({id: $stateParams.id});
+		this.user = UserRepository.user.get({id: $stateParams.idLog});
 
 		this.announceClick = function(index) {
 		    $mdDialog.show(
@@ -14,7 +14,8 @@
 		};
 
 		this.logout = function(){
-			localStorage.token = {};
+			delete localStorage.token;
+			delete localStorage.user;
 			$http.defaults.headers.common.Authorization = '';
 			$state.go('login');
 		}
