@@ -1,6 +1,6 @@
 (function(){
 	hxplus.controller('DoctorMainController',function($state,$stateParams,$http,DoctorRepository,PatientRepository){
-		this.doctor = DoctorRepository.doctorEager.get({id: $stateParams.idLog});
+		this.doctor = DoctorRepository.doctor.get({id: $stateParams.idLog});
     console.log("Id del Loggeado");
     console.log($stateParams.idLog);
     console.log("Doctor:");
