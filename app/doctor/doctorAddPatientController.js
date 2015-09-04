@@ -1,5 +1,5 @@
 (function(){
-	hxplus.controller('AddPatientController', function($stateParams, $state, $mdDialog, 
+	hxplus.controller('DoctorAddPatientController', function($stateParams, $state, $mdDialog, 
 			$translate,$http, UserRepository,PatientRepository,DoctorRepository){
 
 		this.doctor = DoctorRepository.doctor.get({id:$stateParams.idDoc});
@@ -7,7 +7,7 @@
 		this.newpatient = {};
 
 		this.firstConsult = function(){
-
+			
 		};
 
 		this.submit = function(patientRequest){
