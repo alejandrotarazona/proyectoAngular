@@ -4,6 +4,7 @@
 		"2ndbutton" 	: "2do Botón",
 		"3rdbutton" 	: "3er Botón",
 		"users"			: "Listar Usuarios",
+		"doctor"		: "Listar Pacientes",
 		"settings"		: {
 			"option"	: "Opción",
 			"language"	: "Idioma",
@@ -63,5 +64,10 @@
 		"last-name"		: "@:profile-edit.last-name",
 		"edit"			: "@:profile.edit",
 		"delete"		: "Borrar Usuario"
+	},
+
+	"doctor"			:{
+		"addPatient"	: "Agregar Pacientes",
+		"patients"		: "Pacientes"
 	}
 }

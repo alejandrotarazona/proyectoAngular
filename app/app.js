@@ -54,6 +54,16 @@ var hxplus;
             templateUrl: 'app/user/userCreateNew.html'
         });
 
+        $stateProvider.state('home.doctor',{
+            url: '/doctor/:idDoc',
+            templateUrl: 'app/doctor/doctorMain.html'
+        });
+
+        $stateProvider.state('home.doctor.addPatient',{
+            url: '/addPatient',
+            templateUrl: 'app/doctor/doctorAddPatient.html'
+        });
+
         //===== CONFIGURACION DE TRADUCCIONES ====//
         $translateProvider.useStaticFilesLoader({
             prefix: 'data/',

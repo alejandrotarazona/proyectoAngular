@@ -1,0 +1,9 @@
+<div ng-controller="AddPatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
+	
+	<md-button on-click="firstConsult"/>
+
+	<md-select ng-model="patient.newpatient">
+    	<md-option ng-repeat="patient in patientCtrl.listPatients" value="{{patient}}">{{patient.firstname}} {{patient.lastname}}
+  		</md-option>
+    </md-select>
+</div>

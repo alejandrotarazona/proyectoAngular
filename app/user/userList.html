@@ -1,9 +1,9 @@
-<div layout="column" ng-controller="ListUserController as userCtrl" layout-margin layout-fill layout-padding>
+<div layout="column" ng-controller="ListUserController as userCtrl" layout-margin layout-fill layout-padding  layout-align="center center">
 
-	<md-button class="md-button" ui-sref="home.userCreate" aria-label="user-list.create" translate="user-list.create" flex>
+	<md-button class="md-button" ui-sref="home.userCreate" aria-label="user-list.create" translate="user-list.create">
 	</md-button>
-	<div layout="row" layout-align="center center" ng-repeat="thisUser in userCtrl.listUsers">
-		<a ui-sref="home.userDetails({id: thisUser.id})" ui-sref-opts="">
+	<div ng-repeat="thisUser in userCtrl.listUsers" >
+		<a ui-sref="home.userDetails({id: thisUser.id})" ui-sref-opts=""  layout="column" layout-align="center center">
         	<span>{{thisUser.firstName}} {{thisUser.lastName}}</span>
         </a>
 	</div>
