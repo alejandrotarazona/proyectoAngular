@@ -8,7 +8,7 @@
 		<md-list-item ng-repeat="patient in doctorCtrl.patients" ng-click="goToPatient(patient)">
 		    <!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
 		    <p>{{ patient.user.lastName }} {{ patient.user.firstName }}</p>
-		    <md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': patient.newMessage}"></md-icon>
+		    <md-icon md-svg-icon="messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': patient.newMessage}"></md-icon>
 		</md-list-item>
 	</md-list>
 </div>

@@ -2,17 +2,14 @@
 	Agregar Paciente
 	<form name="patientForm" ng-submit="patientCtrl.submit(patientRequest.id,patientCtrl.doctor.id)">
 		<md-input-container layout-align="center center">
-			<!--label>doctor.addPatients.select</label-->
-			<md-select ng-model="patientRequest" aria-label="Elija un paciente..." placeholder="Elija paciente">
+			<md-select ng-model="patientRequest" placeholder="Elija un paciente registrado">
 				<md-option ng-value="patient" ng-repeat="patient in patientCtrl.listPatients">{{patient.user.lastName}} {{patient.user.firstName}}
 				</md-option>
 			</md-select>
 		</md-input-container>
-		Paciente a agregar:
-			{{patientRequest.id}}
-			{{patientRequest.user.username}}
-			<br>
-		<md-button class="md-button" type="sumbit" aria-label="doctor.addPatients.add" translate="doctor.addPatients.add">
+		<md-button class="md-button" type="sumbit" aria-label="doctor.addPatients.add" translate="doctor.addPatients.add" layout-align="center center">
 		</md-button>
 	</form>
+	<md-button class="md-button"  aria-label="doctor.addPatients.new" translate="doctor.addPatients.new" layout-align="center center">
+	</md-button>
 </div>
