@@ -59,9 +59,9 @@ var hxplus;
             templateUrl: 'app/doctor/doctorMain.html'
         });
 
-        $stateProvider.state('home.doctor.addPatient',{
+        $stateProvider.state('home.addPatient',{
             url: '/addPatient',
-            templateUrl: 'app/doctor/doctorAddPatient.html'
+            templateUrl: 'app/patient/addPatient.html'
         });
 
         //===== CONFIGURACION DE TRADUCCIONES ====//

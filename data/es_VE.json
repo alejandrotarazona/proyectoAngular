@@ -67,7 +67,11 @@
 	},
 
 	"doctor"			:{
-		"addPatient"	: "Agregar Pacientes",
-		"patients"		: "Pacientes"
+		"addPatient"	: "Agregar Paciente",
+		"patients"		: "Pacientes",
+		"addPatients"	:{
+			"select"	: "Elija un paciente registrado...",
+			"add"		: "Agregar paciente"
+		}
 	}
 }

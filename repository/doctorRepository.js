@@ -8,7 +8,14 @@
 					}
 				}),
 
-			doctorEager: $resource('http\://localhost\:8080/occupational/doctor/:id/dashboard',{id: '@id'})
+			doctorAddPatient: $resource('http\://localhost\:8080/occupational/doctor/:id/:idPatient',{id: '@id', idPatient:'@idPatient'},
+				{
+					'update':{
+						method:'PUT',
+					}
+				}),
+
+			//doctorEager: $resource('http\://localhost\:8080/occupational/doctor/:id/listPatients',{id: '@id'})
 		};
 	});
 })()

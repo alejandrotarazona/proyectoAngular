@@ -1,12 +1,13 @@
 <div layout="column" ng-controller="DoctorMainController as doctorCtrl" layout-margin layout-fill layout-padding layout-align="center center">
 
-	<md-button class="md-button" ui-sref="home.doctor.addPatient" aria-label="doctor.addPatient" translate="doctor.addPatient">
+	<md-button class="md-button" ui-sref="home.addPatient" aria-label="doctor.addPatient" translate="doctor.addPatient">
 	</md-button>
+
 	<span translate="doctor.patients"></span>
 	<md-list>
-		<md-list-item ng-repeat="patient in doctorCtrl.doctor.patients" ng-click="goToPatient(patient)">
+		<md-list-item ng-repeat="patient in doctorCtrl.patients" ng-click="goToPatient(patient)">
 		    <!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
-		    <p>{{ patient.username }}</p>
+		    <p>{{ patient.user.lastName }} {{ patient.user.firstName }}</p>
 		    <md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': patient.newMessage}"></md-icon>
 		</md-list-item>
 	</md-list>

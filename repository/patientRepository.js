@@ -7,7 +7,7 @@
 						method:'PUT',
 					}
 				}),
-			patients: $resource('http\://localhost\:8080/occupational/patient/:id/list',{id: '@id'})
+			patients: $resource('http\://localhost\:8080/occupational/patient/:id/listPatients',{id: '@id'})
 		};
 	});
 })()

@@ -14,7 +14,7 @@
           </a>
         </div>
         <div flex>
-          <a ui-sref="home.doctor" ui-sref-opts="{idDoc: home.user.id}">
+          <a ui-sref="home.doctor({idDoc: home.user.id})" ui-sref-opts="{idDoc: home.user.id}">
             <span translate>home-bar.doctor</span>
           </a>
         </div>
@@ -68,5 +68,5 @@
 </md-content>
 
 <!-- Nuevo UI-View -->
-<div ui-view>
+<div ui-view layout="column" layout-fill layout-padding layout-align="center center">
 </div>
