@@ -74,5 +74,30 @@
 			"add"		: "Agregar paciente",
 			"new"		: "Nuevo paciente"
 		}
+	},
+
+	"newPatient"		:{
+		"select"		: "Elija un usuario registrado",
+		"user"			: "Usuario",
+		"history"		: "Historia Médica",
+		"historyMenu"	:{
+			"background": "Trasfondo",
+			"allergies"	: "Alergias",
+			"vaccines"	: "Vacunas",
+			"habits"	: "Hábitos",
+			"allergy"	:{
+				"name"			: "Nombre",
+				"description"	: "Descripción",
+				"severity"		: "Severidad"
+			},
+			"vaccine"	:{
+				"name"			: "@:newPatient.historyMenu.allergy.name",
+				"potency"		: "Potencia"
+			},
+			"habit"		:{
+				"name"			: "@:newPatient.historyMenu.allergy.name",
+				"frecuency"		: "Frecuencia"
+			}
+		}
 	}
 }

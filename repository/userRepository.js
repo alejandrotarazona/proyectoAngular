@@ -6,7 +6,9 @@
 					'update':{
 						method:'PUT',
 					}
-				})
+				}),
+
+			usersPatients: $resource('http\://localhost\:8080/occupational/user/listnopatient')
 		};
 	});
 })()

@@ -1,0 +1,58 @@
+<div layout="column" ng-controller="NewPatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
+	
+	<!--form name="patientForm"-->
+
+		<md-input-container layout-align="center center">
+			<md-select ng-model="patientRequest.user" placeholder="{{ 'newPatient.select' | translate }}">
+				<md-option ng-value="user" ng-repeat="user in patientCtrl.users">{{user.lastName}} {{user.firstName}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<label translate="newPatient.history"></label>
+		<md-input-container>
+			<label translate="newPatient.historyMenu.background"></label>
+			<textarea ng-model="patientRequest.historyRequest.background" title="newPatient.historyMenu.background" required></textarea>
+		</md-input-container>
+
+		<!-- Lista de Alergias -->
+		<label translate="newPatient.historyMenu.allergies"></label>
+		<div ng-repeat="allergy in patientCtrl.patientRequest.historyRequest.allergies">
+			<span>{{newPatient.historyMenu.allergy.name | translate }}</span> {{ allergy.name }}
+			<span>{{newPatient.historyMenu.allergy.description | translate }}</span> {{ allergy.description }}
+			<span>{{newPatient.historyMenu.allergy.severity | translate }}</span> {{ allergy.severity }}
+		</div>
+
+		<!-- Formulario para una nueva alergia -->
+		<form name="allergyForm">
+			<md-input-container>
+				<label translate="newPatient.historyMenu.allergy.name"></label>
+				<input ng-model="patientCtrl.allergy.name" title="newPatient.historyMenu.allergy.name" required></input>
+			</md-input-container>
+			<md-input-container>
+				<label translate="newPatient.historyMenu.allergy.description"></label>
+				<input ng-model="patientCtrl.allergy.description" title="newPatient.historyMenu.allergy.description" required></input>
+			</md-input-container>
+			<md-input-container>
+				<label translate="newPatient.historyMenu.allergy.severity"></label>
+				<input ng-model="patientCtrl.allergy.severity" title="newPatient.historyMenu.allergy.severity" required></input>
+			</md-input-container>
+
+			<md-button ng-click="patientCtrl.addAllergy(patientCtrl.allergy)">Submit</md-button>
+		</form>
+
+		<label translate="newPatient.historyMenu.vaccines"></label>
+		
+		<md-input-container>
+			<input ng-model="patientRequest.history.vaccines" title="newPatient.historyMenu.background" required></input>
+		</md-input-container>
+		
+
+		<label translate="newPatient.historyMenu.habits"></label>
+
+		<md-input-container>
+			<input ng-model="patientRequest.history.habits" title="newPatient.historyMenu.background" required></input>
+		</md-input-container>
+
+	<!--/form-->
+</div>

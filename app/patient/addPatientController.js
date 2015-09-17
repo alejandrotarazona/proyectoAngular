@@ -23,5 +23,13 @@
 			
 		};
 
+		this.newPatient = function(){
+			console.log("Agregar paciente nuevo");
+			$state.go('home.newPatient',{},
+			{
+				inherit:true,
+			})
+		};
+
 	});
 })()
