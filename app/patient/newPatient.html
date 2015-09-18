@@ -19,12 +19,14 @@
 		<!-- Lista de Alergias -->
 			<label translate="newPatient.historyMenu.allergies"></label><br>
 			<div ng-repeat="allergy in patientCtrl.patientRequest.history.allergies">
-				<span>{{newPatient.historyMenu.allergy.name | translate }}</span> {{ allergy.name }}<br>
-				<span>{{newPatient.historyMenu.allergy.description | translate }}</span> {{ allergy.description }}<br>
-				<span>{{newPatient.historyMenu.allergy.severity | translate }}</span> {{ allergy.severity }}<br>
+				<br>
+				<span translate="newPatient.historyMenu.allergy.name"></span>: {{ allergy.name }}<br>
+				<span translate="newPatient.historyMenu.allergy.description"></span>: {{ allergy.description }}<br>
+				<span translate="newPatient.historyMenu.allergy.severity"></span>: {{ allergy.severity }}<br>
 			</div>
 
 		<!-- Formulario para una nueva alergia -->
+			<br>
 			<label>Nueva Alergia</label><br>
 			<md-input-container>
 				<label translate="newPatient.historyMenu.allergy.name"></label>
