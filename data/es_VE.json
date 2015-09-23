@@ -85,6 +85,22 @@
 			"allergies"	: "Alergias",
 			"vaccines"	: "Vacunas",
 			"habits"	: "Hábitos",
+
+			"newAllergy": "Nueva Alergia",
+			"addAllergy": "Agregar Alergia",
+			"delAllergy": "Borrar Alergia",
+			"ediAllergy": "Editar Alergia",
+
+			"newHabit"	: "Nuevo Hábito",
+			"addHabit"	: "Agregar Hábito",
+			"delHabit"	: "Borrar Hábito",
+			"ediHabit"	: "Editar Hábito",
+
+			"newVaccine": "Nueva Vacuna",
+			"addVaccine": "Agregar Vacuna",
+			"delVaccine": "Borrar Vacuna",
+			"ediVaccine": "Editar Vacuna",
+			
 			"allergy"	:{
 				"name"			: "Nombre",
 				"description"	: "Descripción",
@@ -98,6 +114,8 @@
 				"name"			: "@:newPatient.historyMenu.allergy.name",
 				"frecuency"		: "Frecuencia"
 			}
-		}
+		},
+
+		"addPatient"	: "Agregar Paciente"
 	}
 }

@@ -15,6 +15,7 @@
 					}
 				}),
 
+			doctorUser: $resource('http\://localhost\:8080/occupational/doctor/user/:id' , {id: '@id'}),
 			//doctorEager: $resource('http\://localhost\:8080/occupational/doctor/:id/listPatients',{id: '@id'})
 		};
 	});

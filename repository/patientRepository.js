@@ -1,7 +1,7 @@
 (function(){
 	hxplus.factory('PatientRepository', function($resource){
 		return {
-			patient: $resource('http\://localhost\:8080/occupational/patient/:id',{id: '@id'},
+			patient: $resource('http\://localhost\:8080/occupational/patient/:idUser/:idDoc',{idUser: '@idUser', idDoc: '@idDoc'},
 				{
 					'update':{
 						method:'PUT',
