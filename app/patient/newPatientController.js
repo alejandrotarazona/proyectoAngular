@@ -88,14 +88,11 @@
 				console.log("En Submit");
 				console.log(patientRequest);
 
-				console.log("Form.patientRequest:");
-				console.log(formulario.patientRequest);
-
-				PatientRepository.addPatient.save(patientRequest,
+				PatientRepository.addPatient.save(
 					{
 						idUser:formulario.patientRequest.user.id, 
 						idDoc: $stateParams.idLog
-					}
+					},patientRequest
 				);
 
 				$state.go('home.doctor',{},
