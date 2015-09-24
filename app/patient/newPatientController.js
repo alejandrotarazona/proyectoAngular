@@ -91,7 +91,7 @@
 				console.log("Form.patientRequest:");
 				console.log(formulario.patientRequest);
 
-				PatientRepository.patient.save(patientRequest,
+				PatientRepository.addPatient.save(patientRequest,
 					{
 						idUser:formulario.patientRequest.user.id, 
 						idDoc: $stateParams.idLog
