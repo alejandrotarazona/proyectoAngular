@@ -80,6 +80,7 @@
 		"select"		: "Elija un usuario registrado",
 		"user"			: "Usuario",
 		"history"		: "Historia Médica",
+
 		"historyMenu"	:{
 			"background": "Trasfondo",
 			"allergies"	: "Alergias",
@@ -106,16 +107,17 @@
 				"description"	: "Descripción",
 				"severity"		: "Severidad"
 			},
+
 			"vaccine"	:{
 				"name"			: "@:newPatient.historyMenu.allergy.name",
 				"potency"		: "Potencia"
 			},
+
 			"habit"		:{
 				"name"			: "@:newPatient.historyMenu.allergy.name",
 				"frecuency"		: "Frecuencia"
 			}
 		},
-
 		"addPatient"	: "Agregar Paciente"
 	},
 
@@ -127,11 +129,11 @@
 		"last-name"		: "@:profile-edit.last-name",
 		"ci"			: "@:profile.ci",
 		"rif"			: "@:profile.rif",
+
 		"user"			:{
 			"phone"			: "@:profile.phone",
 			"email"			: "@:profile.email",
 			"address"		: "@:profile.address"
-		},
-
+		}
 	}
 }

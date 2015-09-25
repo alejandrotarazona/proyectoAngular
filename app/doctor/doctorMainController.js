@@ -17,6 +17,7 @@
         this.goToPatient = function(patient){
             console.log("goToPatient");
             console.log(patient.user.username);
+            $state.go('home.patient',{idPatient:patient.id});
         };
     });
 

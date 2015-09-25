@@ -73,7 +73,7 @@ var hxplus;
 
         $stateProvider.state('home.patient',{
             url: '/patient/:idPatient',
-            templateUrl: 'app/patient/newPatient.html'
+            templateUrl: 'app/patient/patient.html'
         })
 
         //===== CONFIGURACION DE TRADUCCIONES ====//
