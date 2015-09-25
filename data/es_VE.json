@@ -117,5 +117,21 @@
 		},
 
 		"addPatient"	: "Agregar Paciente"
+	},
+
+	"patient"			:{
+		"new-consult"	: "Crear Consulta",
+		"next-consult"	: "Programar Consulta",
+		"first-name"	: "@:profile-edit.first-name",
+		"username"		: "@:profile.username",
+		"last-name"		: "@:profile-edit.last-name",
+		"ci"			: "@:profile.ci",
+		"rif"			: "@:profile.rif",
+		"user"			:{
+			"phone"			: "@:profile.phone",
+			"email"			: "@:profile.email",
+			"address"		: "@:profile.address"
+		},
+
 	}
 }

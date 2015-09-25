@@ -69,6 +69,13 @@ var hxplus;
             templateUrl: 'app/patient/newPatient.html'
         });
 
+        //===== Consultas =====//
+
+        $stateProvider.state('home.patient',{
+            url: '/patient/:idPatient',
+            templateUrl: 'app/patient/newPatient.html'
+        })
+
         //===== CONFIGURACION DE TRADUCCIONES ====//
         $translateProvider.useStaticFilesLoader({
             prefix: 'data/',

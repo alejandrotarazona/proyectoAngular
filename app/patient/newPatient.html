@@ -1,25 +1,24 @@
-<div layout="column" ng-controller="NewPatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
-	
-	<ng-form name="patientCtrl.patientForm">
+<div layout="row" ng-controller="NewPatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
+	<div layout="column" flex="66">
+		<ng-form name="patientCtrl.patientForm">
 
-		<md-input-container layout-align="center center">
-			<md-select ng-model="patientCtrl.patientRequest.user" placeholder="{{ 'newPatient.select' | translate }}">
-				<md-option ng-value="user" ng-repeat="user in patientCtrl.users">{{user.lastName}} {{user.firstName}}
-				</md-option>
-			</md-select>
-		</md-input-container>
+			<md-input-container layout-align="center center">
+				<md-select ng-model="patientCtrl.patientRequest.user" placeholder="{{ 'newPatient.select' | translate }}">
+					<md-option ng-value="user" ng-repeat="user in patientCtrl.users">{{user.lastName}} {{user.firstName}}
+					</md-option>
+				</md-select>
+			</md-input-container>
 
-		<label translate="newPatient.history"></label>
-		<md-input-container>
-			<label translate="newPatient.historyMenu.background"></label>
-			<textarea ng-model="patientCtrl.patientRequest.history.background.description" title="newPatient.historyMenu.background" required></textarea>
-		</md-input-container>
+			<label translate="newPatient.history"></label>
+			<md-input-container>
+				<label translate="newPatient.historyMenu.background"></label>
+				<textarea ng-model="patientCtrl.patientRequest.history.background.description" title="newPatient.historyMenu.background" required></textarea>
+			</md-input-container>
 
-		<div layout="row" layout-margin layout-fill layout-padding>
-			<div layout="column" layout-margin layout-fill layout-padding>
-		<!--ng-form name="allergyForm" ng-submit="patientCtrl.addAllergy(patientCtrl.history)"-->
-		<!-- Lista de Alergias -->
-			<label translate="newPatient.historyMenu.allergies"></label><br>
+
+			<!--ng-form name="allergyForm" ng-submit="patientCtrl.addAllergy(patientCtrl.history)"-->
+			<!-- Lista de Alergias -->
+				<label translate="newPatient.historyMenu.allergies"></label><br>
 			<div ng-repeat="allergy in patientCtrl.patientRequest.history.allergies">
 				<span translate="newPatient.historyMenu.allergy.name"></span>: {{ allergy.name }}<br>
 				<span translate="newPatient.historyMenu.allergy.description"></span>: {{ allergy.description }}<br>
@@ -32,94 +31,91 @@
 				</md-button>
 			</div>
 
-		<!-- Formulario para una nueva alergia -->
-		<ng-form name="patientCtrl.allergyForm">
-			<br>
-			<label translate="newPatient.historyMenu.newAllergy"></label><br>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.allergy.name"></label>
-				<input ng-model="allergy.name" title="newPatient.historyMenu.allergy.name" required></input>
-			</md-input-container>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.allergy.description"></label>
-				<textarea ng-model="allergy.description" title="newPatient.historyMenu.allergy.description"></textarea>
-			</md-input-container>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.allergy.severity"></label>
-				<input ng-model="allergy.severity" title="newPatient.historyMenu.allergy.severity" required></input>
-			</md-input-container>
+			<!-- Formulario para una nueva alergia -->
+			<ng-form name="patientCtrl.allergyForm">
+				<br>
+				<label translate="newPatient.historyMenu.newAllergy"></label><br>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.allergy.name"></label>
+					<input ng-model="allergy.name" title="newPatient.historyMenu.allergy.name" required></input>
+				</md-input-container>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.allergy.description"></label>
+					<textarea ng-model="allergy.description" title="newPatient.historyMenu.allergy.description"></textarea>
+				</md-input-container>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.allergy.severity"></label>
+					<input ng-model="allergy.severity" title="newPatient.historyMenu.allergy.severity" required></input>
+				</md-input-container>
 
-			<md-button ng-click="patientCtrl.addAllergy(allergy)" class="md-button" aria-label="newPatient.historyMenu.addAllergy" translate="newPatient.historyMenu.addAllergy" layout-align="center center">
-			</md-button><br>
+				<md-button ng-click="patientCtrl.addAllergy(allergy)" class="md-button" aria-label="newPatient.historyMenu.addAllergy" translate="newPatient.historyMenu.addAllergy" layout-align="center center">
+				</md-button><br>
+			</ng-form>
+
+			<!-- Lista de Habitos -->
+			<label translate="newPatient.historyMenu.habits"></label><br>
+			<div ng-repeat="habit in patientCtrl.patientRequest.history.habits">
+				<br>
+				<span translate="newPatient.historyMenu.habit.name"></span>: {{ habit.name }}<br>
+				<span translate="newPatient.historyMenu.habit.frecuency"></span>: {{ habit.frecuency }}<br>
+
+				<md-button ng-click="patientCtrl.delete(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.delHabit" translate="newPatient.historyMenu.delHabit">				
+				</md-button>
+
+				<md-button ng-click="patientCtrl.editHabit(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.ediHabit" translate="newPatient.historyMenu.ediHabit">
+				</md-button>
+			</div>
+			<!-- Formulario para una nuevo habito -->
+			<br>
+			<ng-form name="patientCtrl.habitForm">
+				<label>Nuevo Habito</label><br>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.allergy.name"></label>
+					<input ng-model="habit.name" title="newPatient.historyMenu.habit.name" required></input>
+				</md-input-container>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.habit.frecuency"></label>
+					<input ng-model="habit.frecuency" title="newPatient.historyMenu.habit.frecuency"></input>
+				</md-input-container>
+
+				<md-button ng-click="patientCtrl.addHabit(habit)" class="md-button" aria-label="newPatient.historyMenu.addHabit" translate="newPatient.historyMenu.addHabit" layout-align="center center">
+				</md-button>
+			</ng-form>
+			<br>
+			<!-- Lista de Vacunas -->
+			<label translate="newPatient.historyMenu.vaccines"></label><br>
+			<div ng-repeat="vaccine in patientCtrl.patientRequest.history.vaccines">
+				<br>
+				<span translate="newPatient.historyMenu.vaccine.name"></span>: {{ vaccine.name }}<br>
+				<span translate="newPatient.historyMenu.vaccine.potency"></span>: {{ vaccine.potency }}<br>
+
+				<md-button ng-click="patientCtrl.delete(patientCtrl.patientRequest.history.vaccines,$index)" class="md-button" aria-label="newPatient.historyMenu.delVaccine" translate="newPatient.historyMenu.delVaccine">				
+				</md-button>
+
+				<md-button ng-click="patientCtrl.editHabit(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.ediVaccine" translate="newPatient.historyMenu.ediVaccine">
+				</md-button>
+			</div>
+			<br>
+
+			<!-- Formulario para una nueva Vacuna -->
+			<ng-form name="patientCtrl.vaccineForm">
+				<label translate="newPatient.historyMenu.newVaccine"></label><br>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.vaccine.name"></label>
+					<input ng-model="vaccine.name" title="newPatient.historyMenu.vaccine.name" required></input>
+				</md-input-container>
+				<md-input-container>
+					<label translate="newPatient.historyMenu.vaccine.potency"></label>
+					<input ng-model="vaccine.potency" title="newPatient.historyMenu.vaccine.potency"></input>
+				</md-input-container>
+
+				<md-button ng-click="patientCtrl.addVaccine(vaccine)" class="md-button" aria-label="newPatient.historyMenu.addVaccine" translate="newPatient.historyMenu.addVaccine" layout-align="center center">
+				</md-button>
+			</ng-form>
+			<div layout="column" layout-align="center center">
+				<md-button ng-click="patientCtrl.submit(patientCtrl.patientRequest)" class="md-button" aria-label="newPatient.addPatient" translate="newPatient.addPatient">
+				</md-button>
+			</div>
 		</ng-form>
 	</div>
-		<div layout="column"  layout-margin layout-fill layout-padding>
-		<!-- Lista de Habitos -->
-		<label translate="newPatient.historyMenu.habits"></label><br>
-		<div ng-repeat="habit in patientCtrl.patientRequest.history.habits">
-			<br>
-			<span translate="newPatient.historyMenu.habit.name"></span>: {{ habit.name }}<br>
-			<span translate="newPatient.historyMenu.habit.frecuency"></span>: {{ habit.frecuency }}<br>
-
-			<md-button ng-click="patientCtrl.delete(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.delHabit" translate="newPatient.historyMenu.delHabit">				
-			</md-button>
-
-			<md-button ng-click="patientCtrl.editHabit(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.ediHabit" translate="newPatient.historyMenu.ediHabit">
-			</md-button>
-		</div>
-		<!-- Formulario para una nuevo habito -->
-		<br>
-		<ng-form name="patientCtrl.habitForm">
-			<label>Nuevo Habito</label><br>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.allergy.name"></label>
-				<input ng-model="habit.name" title="newPatient.historyMenu.habit.name" required></input>
-			</md-input-container>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.habit.frecuency"></label>
-				<input ng-model="habit.frecuency" title="newPatient.historyMenu.habit.frecuency"></input>
-			</md-input-container>
-
-			<md-button ng-click="patientCtrl.addHabit(habit)" class="md-button" aria-label="newPatient.historyMenu.addHabit" translate="newPatient.historyMenu.addHabit" layout-align="center center">
-			</md-button>
-		</ng-form>
-	</div>
-		<div layout="column"  layout-margin layout-fill layout-padding>
-		<!-- Lista de Vacunas -->
-		<label translate="newPatient.historyMenu.vaccines"></label><br>
-		<div ng-repeat="vaccine in patientCtrl.patientRequest.history.vaccines">
-			<br>
-			<span translate="newPatient.historyMenu.vaccine.name"></span>: {{ vaccine.name }}<br>
-			<span translate="newPatient.historyMenu.vaccine.potency"></span>: {{ vaccine.potency }}<br>
-
-			<md-button ng-click="patientCtrl.delete(patientCtrl.patientRequest.history.vaccines,$index)" class="md-button" aria-label="newPatient.historyMenu.delVaccine" translate="newPatient.historyMenu.delVaccine">				
-			</md-button>
-
-			<md-button ng-click="patientCtrl.editHabit(patientCtrl.patientRequest.history.habits,$index)" class="md-button" aria-label="newPatient.historyMenu.ediVaccine" translate="newPatient.historyMenu.ediVaccine">
-			</md-button>
-		</div>
-		<br>
-
-		<!-- Formulario para una nueva Vacuna -->
-		<ng-form name="patientCtrl.vaccineForm">
-			<label translate="newPatient.historyMenu.newVaccine"></label><br>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.vaccine.name"></label>
-				<input ng-model="vaccine.name" title="newPatient.historyMenu.vaccine.name" required></input>
-			</md-input-container>
-			<md-input-container>
-				<label translate="newPatient.historyMenu.vaccine.potency"></label>
-				<input ng-model="vaccine.potency" title="newPatient.historyMenu.vaccine.potency"></input>
-			</md-input-container>
-
-			<md-button ng-click="patientCtrl.addVaccine(vaccine)" class="md-button" aria-label="newPatient.historyMenu.addVaccine" translate="newPatient.historyMenu.addVaccine" layout-align="center center">
-			</md-button>
-		</ng-form>
-	</div>
-	</div>
-	<div layout="column" layout-align="center center">
-		<md-button ng-click="patientCtrl.submit(patientCtrl.patientRequest)" class="md-button" aria-label="newPatient.addPatient" translate="newPatient.addPatient">
-		</md-button>
-	</div>
-	</ng-form>
 </div>

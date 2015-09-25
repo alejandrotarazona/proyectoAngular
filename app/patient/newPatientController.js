@@ -92,15 +92,16 @@
 					{
 						idUser:formulario.patientRequest.user.id, 
 						idDoc: $stateParams.idLog
-					},patientRequest
-				);
-
-				$state.go('home.doctor',{},
-					{
-							inherit:true,
-							reload:true,
-					}
-				);
+					},
+					patientRequest
+				).$promise.then(function(data){
+					$state.transitionTo('home.doctor',{},
+						{
+								inherit:true,
+								reload:true,
+						}
+					);
+				});
 			};
 
 	});
