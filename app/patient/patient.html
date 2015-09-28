@@ -1,5 +1,19 @@
 <div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
 	<div layout="column" layout-align="center center" flex="66">
-		<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong>
+		<!-- Info básica -->
+		<div layout="row" layout-align="center center" flex>
+			<!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
+			<strong>FOTO</strong>
+			<div layout="column" layout-align="center center" flex="66">
+				<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong>
+				<strong></strong><span>{{ patientCtrl.patient.user.address }}</span>
+				<span>{{ patientCtrl.patient.user.phonenumber }}</span>
+				<!--<span>{{ patientCtrl.patient.user.post }}</span-->
+			</div>
+			<div>LINKS</div>
+
+		</div>
+		<!-- Historial de consultas -->
+		<div layout="row" layout-align="center center" flex></div>
 	</div>
 </div>
