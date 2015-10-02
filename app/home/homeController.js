@@ -2,7 +2,7 @@
 	hxplus.controller('HomeController', function($stateParams, $state, $mdDialog, 
 			$translate,$http, UserRepository){
 
-		this.user = UserRepository.user.get({id: $stateParams.idLog});
+		this.user = UserRepository.user.get({id: $stateParams.idLogged});
 
 		this.announceClick = function(index) {
 		    $mdDialog.show(

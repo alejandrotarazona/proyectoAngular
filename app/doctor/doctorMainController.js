@@ -1,8 +1,8 @@
 (function(){
 	hxplus.controller('DoctorMainController',function($state,$stateParams,$http,DoctorRepository,PatientRepository){
 
-		this.doctor = DoctorRepository.doctorUser.get({id: $stateParams.idLog});
-        this.doctor.patients = PatientRepository.patients.query({id: $stateParams.idLog})
+		this.doctor = DoctorRepository.doctorUser.get({id: $stateParams.idLogged});
+        this.doctor.patients = PatientRepository.patients.query({id: $stateParams.idLogged})
         this.patients = this.doctor.patients;
 
 /*    console.log("Id del Loggeado");

@@ -6,7 +6,9 @@
 					'update':{
 						method:'PUT',
 					}
-				})
+				}),
+
+			postUser: $resource('http\://localhost\:8080/occupational/post/byuser/:idUser/',{idUser: '@idUser'})
 		}
 	});
 })()

@@ -8,7 +8,7 @@
 					}
 				}),
 
-			usersPatients: $resource('http\://localhost\:8080/occupational/user/listnopatient')
+			usersPatients: $resource('http\://localhost\:8080/occupational/user/listnopatient'),
 		};
 	});
 })()

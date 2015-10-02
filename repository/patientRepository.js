@@ -5,6 +5,10 @@
 				{
 					'update':{
 						method:'PUT',
+					},
+					'getData':{
+						method:'GET',
+						isArray:false,
 					}
 				}),
 			patients: $resource('http\://localhost\:8080/occupational/patient/:id/listPatients',{id: '@id'}),

@@ -15,7 +15,7 @@ var hxplus;
         });
 
         $stateProvider.state('home',{
-            url: '/home/:idLog',
+            url: '/home/:idLogged',
             templateUrl: 'app/home/home.html'
         });
 
@@ -30,7 +30,7 @@ var hxplus;
         });
 
         $stateProvider.state('home.userForm',{
-            url: '/userForm/:idLog',
+            url: '/userForm/:idLogged',
             templateUrl: 'app/user/userForm.html'
         });
 

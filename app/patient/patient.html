@@ -1,16 +1,35 @@
-<div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
-	<div layout="column" layout-align="center center" flex="66">
+<div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center" flex="100">
+	<div layout="column" layout-align="center center" flex="100">
 		<!-- Info básica -->
-		<div layout="row" layout-align="center center" flex>
-			<!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
+		<div layout="row" layout-align="space-around center" flex="100">
+			<div>
+				<!--img alt="{{ patientCtrl.patient.photo }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
 			<strong>FOTO</strong>
-			<div layout="column" layout-align="center center" flex="66">
+			</div>
+
+			<div layout="column" layout-align="center center">
 				<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong>
-				<strong></strong><span>{{ patientCtrl.patient.user.address }}</span>
-				<span>{{ patientCtrl.patient.user.phonenumber }}</span>
+				<p><strong>Dirección de habitación: </strong><span>{{ patientCtrl.patient.user.address }}</span></p>
+				<p><strong>Número de Teléfono: </strong><span>{{ patientCtrl.patient.user.phonenumber }}</span></p>
+				<p><strong>Trabajo: </strong> {{ patientCtrl.post.name }}</p>
+				<p><strong>Centro de Costos: </strong>{{patientCtrl.works.address}}</p>
+				<br>
+				<strong>Diagnósticos Previos:</strong>
+				<div ng-hide="patientCtrl.diagnostics">
+					No posee diagnósticos previos
+				</div>
+				<div ng-repeat="diasnostic in patientCtrl.diagnostics">
+					{{ diagnostic.details }}
+				</div>
 				<!--<span>{{ patientCtrl.patient.user.post }}</span-->
 			</div>
-			<div>LINKS</div>
+			<div layout="column" layout-align="center center">
+				<md-button class="md-button" aria-label="newPatient.historyMenu.addHabit" translate="newPatient.historyMenu.addHabit" layout-align="center center">
+				</md-button>
+				<md-button></md-button>
+				<md-button></md-button>
+				<md-button></md-button>
+			</div>
 
 		</div>
 		<!-- Historial de consultas -->
