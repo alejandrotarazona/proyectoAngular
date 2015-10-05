@@ -1,5 +1,9 @@
 (function(){
 	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http, $scope, PatientRepository, CostCenterRepository, PostRepository){
+		
+		this.defaultImg = {
+			url : '/resource/images/nophotouploaded.png'
+		};
 
 		var global = this;
 

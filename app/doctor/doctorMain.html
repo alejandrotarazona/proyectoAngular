@@ -7,10 +7,15 @@
 
 		<span translate="doctor.patients"></span>
 		<md-list>
-			<md-list-item ng-repeat="patient in doctorCtrl.patients" ng-click="doctorCtrl.goToPatient(patient)">
+			<md-list-item ng-repeat="patient in doctorCtrl.patients | orderBy:'user.lastName'" layout-align="space-around center">
 			    <!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
 			    <p>{{ patient.user.lastName }} {{ patient.user.firstName }}</p>
-			    <md-icon md-svg-icon="messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': patient.newMessage}"></md-icon>
+			    <md-button class="md-icon-button" ng-click="doctorCtrl.goToPatient(patient)" > 
+			    	<ng-md-icon icon="assignment" aria-label="{{doctor.see-history}}"></ng-md-icon>
+			    </md-button>
+			    <md-button class="md-icon-button" >
+			    	<ng-md-icon icon="event_available" ng-click="doSecondaryAction($event)" aria-label="Open Chat"></ng-md-icon>
+			    </md-button>
 			</md-list-item>
 		</md-list>
 	</div>

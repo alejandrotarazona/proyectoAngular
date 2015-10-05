@@ -18,7 +18,7 @@
 		"rif"		: "Número de RIF",
 		"phone"		: "Número de Teléfono",
 		"email"		: "Correo Electrónico",
-		"address"	: "Dirección",
+		"address"	: "Dirección de habitación",
 		"edit"		: "Editar"
 	},
 
@@ -69,6 +69,7 @@
 	"doctor"			:{
 		"addPatient"	: "Agregar Paciente",
 		"patients"		: "Pacientes",
+		"see-history"	: "Ver Historia",
 		"addPatients"	:{
 			"select"	: "Elija un paciente registrado...",
 			"add"		: "Agregar paciente",
@@ -133,7 +134,16 @@
 		"user"			:{
 			"phone"			: "@:profile.phone",
 			"email"			: "@:profile.email",
-			"address"		: "@:profile.address"
+			"address"		: "@:profile.address",
+			"works"			: "Trabaja como",
+			"costcenter"	: "Ciudad",
+			"nophone"		: "No posee número telefónico",
+			"diagnostics"	: "Diagnósticos previos",
+			"nodiagnostics"	: "No posee diagnósticos previos",
+			"see-habit"			: "Hábitos",
+			"see-vaccine"		: "Vacunas",
+			"see-allergy"		: "Alergias",
+			"see-background"	: "Trasfondos"
 		}
 	}
 }

@@ -19,6 +19,10 @@
             console.log(patient.user.username);
             $state.go('home.patient',{idPatient:patient.id});
         };
+
+        this.programConsult = function(patient){
+            
+        };
     });
 
 })()
