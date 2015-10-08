@@ -1,6 +1,6 @@
 (function(){
-	hxplus.controller('NewPatientController', function($stateParams, $state, 
-			$translate,$http, $scope, UserRepository,PatientRepository,DoctorRepository){
+	hxplus.controller('NewPatientController', function($stateParams,$state,$translate,$http, $scope, 
+			UserRepository,PatientRepository,DoctorRepository){
 
 			var formulario = this;
 

@@ -1,8 +1,8 @@
-<div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center" flex="100">
-	<div layout="column" layout-align="center center" flex>
+<div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
+	<div layout="column" flex="80">
 		<!-- Info básica -->
-		<div layout="row" layout-align="start start" flex=>
-			<div layout-align="start end" flex>
+		<div layout="row" layout-margin layout-fill layout-padding layout-align="space-between start">
+			<div layout-align="start end" flex="20">
 				<img alt="{{ patientCtrl.patient.photo }}" ng-src="{{ patientCtrl.patient.photo }}" class="md-avatar">
 				<strong>FOTO</strong>
 				<div ng-hide="patientCtrl.patient.photo">
@@ -12,12 +12,14 @@
 			
 			</div>
 
-			<div layout="column" layout-align="center center" flex="66">
-				<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong><br>
+			<div layout="column" layout-align="center center" flex="60">
+				<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong>
+				<p>({{ patientCtrl.post.name }})</p>
+				<br>
 				<p><strong translate="patient.user.email"></strong>: {{ patientCtrl.patient.user.email }}</p>
-				<p><strong translate="patient.user.works"></strong>: {{ patientCtrl.post.name }}</p>
+				
 				<p><strong translate="patient.user.costcenter"></strong>: {{patientCtrl.works.address}}</p>
-				<p><strong translate="patient.user.phone"></strong>: {{ patientCtrl.patient.user.phonenumber }} <div ng-hide="patientCtrl.patient.user.phonenumber"><span translate="patient.user.nophone"></span></div></p>
+				<p><strong translate="patient.user.phone"></strong>: {{ patientCtrl.patient.user.phonenumber }}<div ng-hide="patientCtrl.patient.user.phonenumber"><span translate="patient.user.nophone"></span></div></p>
 				
 				<strong translate="patient.user.diagnostics"></strong>
 				<div ng-hide="patientCtrl.diagnostics">
@@ -28,7 +30,12 @@
 				</div>
 				<!--<span>{{ patientCtrl.patient.user.post }}</span-->
 			</div>
-			<div layout="column" layout-align="start center" flex>
+			<div layout="column" layout-align="start center" flex="20">
+				<md-button class="md-raised" aria-label="patient.user.see-background">
+					<span translate="patient.user.see-background"></span>
+					<ng-md-icon icon="history" style="fill: gray">
+					</ng-md-icon>
+				</md-button>
 				<md-button class="md-raised" aria-label="patient.user.see-habit">
 					<span translate="patient.user.see-habit"></span>
 					<ng-md-icon icon="sync_problem" style="fill: gray">
@@ -44,16 +51,142 @@
 					<ng-md-icon icon="warning" style="fill: gray">
 					</ng-md-icon>
 				</md-button>
-				<md-button class="md-raised" aria-label="patient.user.see-background">
-					<span translate="patient.user.see-background"></span>
-					<ng-md-icon icon="history" style="fill: gray">
-					</ng-md-icon>
-				</md-button>
 
 			</div>
+		</div>
+		<!-- Una nueva consulta -->	
+		<div layout="row" layout-align="center center">
+			<md-button class="md-icon-button md-raised" ng-click="patientCtrl.consult()" ng-hide="patientCtrl.inConsult"> 
+		    	<ng-md-icon icon="note_add" aria-label="{{patient.new-consult}}" style="fill: gray"></ng-md-icon>
+		    </md-button>
+		    <div layout="column" ng-show="patientCtrl.inConsult" layout-align="center center" flex="100">
+		    	<div layout="row" layout-align="center center">
+		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(1)" ng-click="patientCtrl.setInConsultTab(1)">{{ 'patient.soap-tab' | translate }}</md-button>
+		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(2)" ng-click="patientCtrl.setInConsultTab(2)">{{ 'patient.vital-tab' | translate }}</md-button>
+		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(3)" ng-click="patientCtrl.setInConsultTab(3)">{{ 'patient.exams-tab' | translate }}</md-button>
+		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(4)" ng-click="patientCtrl.setInConsultTab(4)">{{ 'patient.files-tab' | translate }}</md-button>
+		    	</div>
 
+		    	<ng-form name="patientCtrl.consultForm" layuout="column" flex="100">
+		    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab(1)" layout="column" flex="80">
+		    			<md-input-container>
+							<label translate="patient.subjective"></label>
+							<input ng-model="patientCtrl.consultRequest.soapNote.subjective" title="patient.subjective" ></input>
+						</md-input-container>
+						<md-input-container>
+							<label translate="patient.objective"></label>
+							<input ng-model="patientCtrl.consultRequest.soapNote.objective" title="patient.objective" ></input>
+						</md-input-container>
+						<md-input-container>
+							<label translate="patient.plan"></label>
+							<input ng-model="patientCtrl.consultRequest.soapNote.plan" title="patient.objective" ></input>
+						</md-input-container>
+						<md-input-container>
+							<label translate="patient.comments"></label>
+							<input ng-model="patientCtrl.consultRequest.soapNote.comments" title="patient.objective" ></input>
+						</md-input-container>
+						<div layout="column">
+							<strong translate="patient.diagnostics"></strong>
+							<div layout "row" layout-align="space-between start" ng-repeat="diagnostic in patientCtrl.consultRequest.diagnostics">
+								<li>{{ diagnostic.details }}</li>
+								<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delDiagnostic($index)"> 
+							    	<ng-md-icon icon="clear" aria-label="{{patient.del-diagnostic}}" style="fill: red"></ng-md-icon>
+							    </md-button>
+							</div>
+						</div>
+						<div layout="row">
+							<md-input-container>
+								<label translate="patient.add-diagnostic"></label>
+								<input ng-model="patientCtrl.diagnosticRequest.details" title="patient.add-diagnostic" ></input>
+							</md-input-container>
+							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addDiagnostic()"> 
+						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-diagnostic}}" style="fill: green"></ng-md-icon>
+						    </md-button>
+						</div>
+
+						<div layout="column" flex="90">
+							<strong translate="patient.instructions"></strong>
+							<div layout "row" layout-align="space-between start" ng-repeat="instruction in patientCtrl.consultRequest.instructions">
+								<li>{{ instruction.instruction }}</li>
+								<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delInstruction($index)"> 
+							    	<ng-md-icon icon="clear" aria-label="{{patient.del-instruction}}" style="fill: red"></ng-md-icon>
+							    </md-button>
+							</div>
+						</div>
+						<div layout="row">
+							<div layout="column" flex="90">
+								<div layout="row">
+									<md-input-container>
+										<label translate="patient.add-instruction"></label>
+										<input ng-model="patientCtrl.instructionRequest.instruction" title="patient.add-instruction" ></input>
+									</md-input-container>
+									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addInstruction()"> 
+								    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-instruction}}" style="fill: green"></ng-md-icon>
+								    </md-button>
+								</div>
+							</div>
+						</div>
+						
+
+						<div layout="row">
+							<div layout="column" flex="100">
+								<div layout="row" ng-repeat="prescription in patientCtrl.consultRequest.prescriptions" layout-align="space-between center">
+									<div layout="column">{{ prescription.drug }} {{ prescription.indication.description }}</div>
+									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delPrescription($index)"> 
+								    	<ng-md-icon icon="clear" aria-label="{{patient.del-prescription}}" style="fill: red"></ng-md-icon>
+								    </md-button>
+								</div>
+								<div layout="row">
+									<md-select ng-model="patientCtrl.prescriptionRequest.drug" placeholder="{{ 'patient.sel-drug' | translate }}">
+										<md-option ng-value="drug" ng-repeat="drug in patientCtrl.drugs">
+											{{ drug.name }}
+										</md-option>
+									</md-select>
+									<md-input-container>
+										<label translate="patient.indication"></label>
+										<input ng-model="patientCtrl.prescriptionRequest.indication.description" title="patient.indication" required></input>
+									</md-input-container>
+									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addPrescription()"> 
+								    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-prescription}}" style="fill: green"></ng-md-icon>
+								    </md-button>
+								</div>
+							</div>
+						</div>
+						<md-input-container>
+							<label translate="patient.comments"></label>
+							<textarea ng-model="patientCtrl.consultRequest.soapNote.comments" title="patient.comments" ></textarea>
+						</md-input-container>
+					</div>
+
+		    		<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab(2)">
+		    			<md-select ng-model="patientCtrl.prescriptionRequest.drug" placeholder="{{ 'patient.sel-drug' | translate }}">
+							<md-option ng-value="drug" ng-repeat="vitalsign in patientCtrl.vitals">
+								{{ drug.name }}
+							</md-option>
+						</md-select>
+		    		</div>
+
+		    		<div name="Exams" ng-show="patientCtrl.isSelectedInConsultTab(3)">
+		    			Exams
+		    		</div>
+
+		    		<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab(4)">
+		    			Files
+		    		</div>
+		    	</ng-form>
+		    	<div>
+		    		<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult()" layout-align="center center"> 
+			    		<ng-md-icon icon="assignment_turned_in" aria-label="{{patient.save-consult}}" style="fill: green"></ng-md-icon>
+			    	</md-button>
+			    	<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult()" layout-align="center center"> 
+			    		<ng-md-icon icon="delete" aria-label="{{patient.save-consult}}" style="fill: red"></ng-md-icon>
+			    	</md-button>
+		    	</div>
+		    </div>
 		</div>
 		<!-- Historial de consultas -->
-		<div layout="row" layout-align="center center" flex></div>
+		<div layout="row" layout-align="center center" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'" flex>
+
+		</div>
 	</div>
 </div>

@@ -21,7 +21,8 @@
         };
 
         this.programConsult = function(patient){
-            
+            console.log("En programar Consulta");
+            console.log(patient.user.firstName);
         };
     });
 

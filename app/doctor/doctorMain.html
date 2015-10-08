@@ -10,11 +10,11 @@
 			<md-list-item ng-repeat="patient in doctorCtrl.patients | orderBy:'user.lastName'" layout-align="space-around center">
 			    <!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
 			    <p>{{ patient.user.lastName }} {{ patient.user.firstName }}</p>
-			    <md-button class="md-icon-button" ng-click="doctorCtrl.goToPatient(patient)" > 
+			    <md-button class="md-icon-button md-raised" ng-click="doctorCtrl.goToPatient(patient)" > 
 			    	<ng-md-icon icon="assignment" aria-label="{{doctor.see-history}}"></ng-md-icon>
 			    </md-button>
-			    <md-button class="md-icon-button" >
-			    	<ng-md-icon icon="event_available" ng-click="doSecondaryAction($event)" aria-label="Open Chat"></ng-md-icon>
+			    <md-button class="md-icon-button md-raised">
+			    	<ng-md-icon icon="event_available" ng-click="doctorCtrl.programConsult(patient)" aria-label="Open Chat"></ng-md-icon>
 			    </md-button>
 			</md-list-item>
 		</md-list>

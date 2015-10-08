@@ -144,6 +144,27 @@
 			"see-vaccine"		: "Vacunas",
 			"see-allergy"		: "Alergias",
 			"see-background"	: "Trasfondos"
-		}
+		},
+
+		"soap-tab"			: "Resúmen General",
+			"subjective"		: "¿Qué dice el paciente?",
+			"objective"			: "¿Qué se puede observar?",
+			"plan"				: "Plan de tratamiento",
+			"comments"			: "Comentarios",
+			"diagnostics"		: "Diagnóstico(s):",
+				"add-diagnostic"	: "Agregue un nuevo diagnóstico",
+				"del-diagnostic"	: "Borrar este diagnóstico",
+			"instructions"		: "Instrucción(es):",
+				"add-instruction"	: "Agregue una nueva instrucción",
+				"del-instruction"	: "Borrar esta instrucción",
+			"prescriptions"		: "Prescripción(es)",
+			"indication"		: "Indicación",
+				"add-prescription"	: "Agrege una nueva prescripción",
+				"del-prescription" 	: "Borrar esta prescripción",
+			"sel-drug"		: "Elija un fármaco registrado",
+		"vital-tab"			: "Signos Vitales",
+		"exams-tab"			: "Exámenes",
+		"files-tab"			: "Archivos"
+
 	}
 }
