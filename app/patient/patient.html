@@ -68,7 +68,7 @@
 		    	</div>
 
 		    	<ng-form name="patientCtrl.consultForm" layuout="column" flex="100">
-		    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab(1)" layout="column" flex="80">
+		    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab(1)" layout="column" flex="90">
 		    			<md-input-container>
 							<label translate="patient.subjective"></label>
 							<input ng-model="patientCtrl.consultRequest.soapNote.subjective" title="patient.subjective" ></input>
@@ -158,19 +158,32 @@
 						</md-input-container>
 					</div>
 
-		    		<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab(2)">
-		    			<md-select ng-model="patientCtrl.prescriptionRequest.drug" placeholder="{{ 'patient.sel-drug' | translate }}">
-							<md-option ng-value="drug" ng-repeat="vitalsign in patientCtrl.vitals">
-								{{ drug.name }}
-							</md-option>
-						</md-select>
+		    		<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab(2)" layout="column" flex="90">
+		    			<div layout="row">
+		    				<table ng-table="patientCtrl.consultRequest.vitalsigns">
+		    				</table>
+		    			</div>
+		    			<div layout="row">
+		    				<md-select ng-model="patientCtrl.vitalsign" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
+								<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals">
+									{{ vitalsign.name }}
+								</md-option>
+							</md-select>
+							<md-input-container>
+								<label translate="patient.description-vs"></label>
+								<textarea ng-model="patientCtrl.vitalsign.description" title="patient.description-vs" ></textarea>
+							</md-input-container>
+							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addVitalSign()"> 
+						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-vitalsign}}" style="fill: green"></ng-md-icon>
+						    </md-button>
+		    			</div>
 		    		</div>
 
-		    		<div name="Exams" ng-show="patientCtrl.isSelectedInConsultTab(3)">
+		    		<div name="Exams" ng-show="patientCtrl.isSelectedInConsultTab(3)" layout="column" flex="90">
 		    			Exams
 		    		</div>
 
-		    		<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab(4)">
+		    		<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab(4)" layout="column" flex="90">
 		    			Files
 		    		</div>
 		    	</ng-form>

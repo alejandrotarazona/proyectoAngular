@@ -7,7 +7,7 @@
 						method:'PUT',
 					}
 				}),
-			vitals: 
+			vitals: $resource('http\://localhost\:8080/occupational/vitlasign/:id',{id: '@id'})
 		};
 	});
 })()

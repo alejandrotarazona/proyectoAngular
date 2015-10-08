@@ -2,7 +2,7 @@ var hxplus;
 
 (function(){
     hxplus = angular.module('hxplus', ['ui.router','ngResource',
-        'ngMaterial','ngMdIcons','pascalprecht.translate','angular-jwt']);
+        'ngMaterial','ngMdIcons','pascalprecht.translate','angular-jwt','ngTable']);
 
     //===== CONFIGURACION DE APP. 1ER PPASO: REDIRECCIONAMIENTOS ====//
     hxplus.config(function($stateProvider, $urlRouterProvider, $translateProvider){

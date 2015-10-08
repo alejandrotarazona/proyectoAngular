@@ -11,12 +11,13 @@
 		};
 
 		this.drugs = DrugRepository.drug.query({});
-		this.vitals = 
+		this.vitals = VitalSignRepository.vitals
 
 		this.consultRequest = {};
 		this.consultRequest.diagnostics = [];
 		this.consultRequest.instructions = [];
-		global.consultRequest.prescriptions = [];
+		this.consultRequest.prescriptions = [];
+		this.consultRequest.vitalsigns = [];
 
 		PatientRepository.patient.get({idUser:$stateParams.idPatient}).$promise.then(function(data){
 			global.patient = data;
@@ -86,5 +87,15 @@
 			global.consultRequest.prescriptions.splice(index,1);
 		};
 
+		this.addVitalSign = function(){
+			if(global.vitalsign != null && global.vitalsign.name != null && global.vitalsign.description != null){
+				global.consultRequest.vitalsigns.push(global.vitalsign);
+				global.vitalsign = null;
+			};
+		};
+
+		this.delVitalSigns = function(index){
+
+		};
 	});
 })()
