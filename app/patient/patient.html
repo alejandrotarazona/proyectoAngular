@@ -81,10 +81,6 @@
 							<label translate="patient.plan"></label>
 							<input ng-model="patientCtrl.consultRequest.soapNote.plan" title="patient.objective" ></input>
 						</md-input-container>
-						<md-input-container>
-							<label translate="patient.comments"></label>
-							<input ng-model="patientCtrl.consultRequest.soapNote.comments" title="patient.objective" ></input>
-						</md-input-container>
 						<div layout="column">
 							<strong translate="patient.diagnostics"></strong>
 							<div layout "row" layout-align="space-between start" ng-repeat="diagnostic in patientCtrl.consultRequest.diagnostics">
@@ -95,10 +91,12 @@
 							</div>
 						</div>
 						<div layout="row">
-							<md-input-container>
-								<label translate="patient.add-diagnostic"></label>
-								<input ng-model="patientCtrl.diagnosticRequest.details" title="patient.add-diagnostic" ></input>
-							</md-input-container>
+							<div layout="column" flex="90">
+								<md-input-container>
+									<label translate="patient.add-diagnostic"></label>
+									<input ng-model="patientCtrl.diagnosticRequest.details" title="patient.add-diagnostic" ></input>
+								</md-input-container>
+							</div>
 							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addDiagnostic()"> 
 						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-diagnostic}}" style="fill: green"></ng-md-icon>
 						    </md-button>
@@ -115,16 +113,16 @@
 						</div>
 						<div layout="row">
 							<div layout="column" flex="90">
-								<div layout="row">
+								
 									<md-input-container>
 										<label translate="patient.add-instruction"></label>
 										<input ng-model="patientCtrl.instructionRequest.instruction" title="patient.add-instruction" ></input>
 									</md-input-container>
+								
+							</div>
 									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addInstruction()"> 
 								    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-instruction}}" style="fill: green"></ng-md-icon>
 								    </md-button>
-								</div>
-							</div>
 						</div>
 						
 
@@ -160,15 +158,32 @@
 
 		    		<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab(2)" layout="column" flex="90">
 		    			<div layout="row">
-		    				<table ng-table="patientCtrl.consultRequest.vitalsigns">
-		    				</table>
+		    				<div layout ="column" layout-align="center start" flex="33">Nombre</div>
+		    				<div layout ="column" layout-align="center center" flex="33">Descripción</div>
+		    				
+		    			</div>
+		    			<div layout="row" ng-repeat= "vitalsign in patientCtrl.consultRequest.vitalsigns">
+		    				<div layout ="column" layout-align="center start" flex="33">{{ vitalsign.name }}</div>
+		    				<div layout ="column" layout-align="center center" flex="33">{{ vitalsign.description }}</div>
+		    				<div layout ="column" layout-align="center end" flex="33">
+		    					<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delVitalSign($index)"> 
+							    	<ng-md-icon icon="clear" aria-label="{{patient.del-prescription}}" style="fill: red"></ng-md-icon>
+							    </md-button>
+							</div>
 		    			</div>
 		    			<div layout="row">
-		    				<md-select ng-model="patientCtrl.vitalsign" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
-								<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals">
+		    				<md-select ng-model="patientCtrl.vitalsign.name" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
+								<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals" ng-click="patientCtrl.hideOther()">
 									{{ vitalsign.name }}
 								</md-option>
+								<md-option ng-value="{{patientCtrl.vitalsign.name2}}" ng-click="patientCtrl.showOther()">
+									{{ 'patient.other' | translate}}
+								</md-option>
 							</md-select>
+							<md-input-container ng-show="patientCtrl.otherOps">
+								<label translate="patient.vs-name"></label>
+								<textarea ng-model="patientCtrl.vitalsign.name2" title="patient.description-vs" ></textarea>
+							</md-input-container>
 							<md-input-container>
 								<label translate="patient.description-vs"></label>
 								<textarea ng-model="patientCtrl.vitalsign.description" title="patient.description-vs" ></textarea>

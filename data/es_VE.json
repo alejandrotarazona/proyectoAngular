@@ -163,10 +163,12 @@
 				"del-prescription" 	: "Borrar esta prescripción",
 			"sel-drug"		: "Elija un fármaco registrado",
 		"vital-tab"			: "Signos Vitales",
+			"vs-name" 			: "Nombre de un nuevo signo vital",
 			"sel-vitalsign" 	: "Elija uno",
 			"description-vs"	: "Valor",
 			"add-vitalsign"		: "Agregar Signo Vital",
 			"vitalsign"			: "Signo vital",
+			"other"			: "Otro",
 		"exams-tab"			: "Exámenes",
 		"files-tab"			: "Archivos"
 

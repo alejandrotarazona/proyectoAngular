@@ -5,6 +5,7 @@
 		var global = this;
 		this.inConsult = false;
 		this.inConsultTab = 1;
+		this.otherOps = false;
 
 		this.defaultImg = {
 			url : '/resource/images/nophotouploaded.png'
@@ -87,15 +88,40 @@
 			global.consultRequest.prescriptions.splice(index,1);
 		};
 
+		this.showOther = function(){
+			global.otherOps = true;
+		};
+
+		this.hideOther = function(name){
+			global.vitalsign.name2 = null;
+			global.vitalsign = name;
+			global.otherOps = false;
+		},
+
 		this.addVitalSign = function(){
+			console.log("En addVitalSign");
+			if(global.vitalsign.name2 != null){
+				console.log("En el 1er if");
+				console.log("name2:");
+				console.log(global.vitalsign.name2);
+				global.vitalsign.name = global.vitalsign.name2;
+			} else {
+				console.log("No entró al primer if");
+			};
+
 			if(global.vitalsign != null && global.vitalsign.name != null && global.vitalsign.description != null){
+				console.log("En el 2do if");
+				console.log("vitalsign:");
+				console.log(global.vitalsign);
 				global.consultRequest.vitalsigns.push(global.vitalsign);
 				global.vitalsign = null;
+			} else {
+				console.log("No entró al segundo if");
 			};
 		};
 
-		this.delVitalSigns = function(index){
-
+		this.delVitalSign = function(index){
+			global.consultRequest.vitalsigns.splice(index,1);
 		};
 	});
 })()
