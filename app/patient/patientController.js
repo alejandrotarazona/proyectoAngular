@@ -12,7 +12,7 @@
 		};
 
 		this.drugs = DrugRepository.drug.query({});
-		this.vitals = VitalSignRepository.vitals
+		this.vitals = VitalSignRepository.vitals.query();
 
 		this.consultRequest = {};
 		this.consultRequest.diagnostics = [];
@@ -47,6 +47,11 @@
 		};
 
 		this.deleteConsult = function(){
+			this.consultRequest = {};
+			this.consultRequest.diagnostics = [];
+			this.consultRequest.instructions = [];
+			this.consultRequest.prescriptions = [];
+			this.consultRequest.vitalsigns = [];
 			this.setInConsultTab(1);
 			global.inConsult = false;
 		};
@@ -93,8 +98,8 @@
 		};
 
 		this.hideOther = function(name){
-			global.vitalsign.name2 = null;
 			global.vitalsign = name;
+			global.vitalsign.name2 = null;
 			global.otherOps = false;
 		},
 
@@ -117,7 +122,7 @@
 				global.vitalsign = null;
 			} else {
 				console.log("No entró al segundo if");
-			};
+			}
 		};
 
 		this.delVitalSign = function(index){

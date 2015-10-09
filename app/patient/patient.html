@@ -71,22 +71,22 @@
 		    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab(1)" layout="column" flex="90">
 		    			<md-input-container>
 							<label translate="patient.subjective"></label>
-							<input ng-model="patientCtrl.consultRequest.soapNote.subjective" title="patient.subjective" ></input>
+							<input ng-model="patientCtrl.consultRequest.soapNote.subjective" title="{{'patient.subjective' | translate}}" ></input>
 						</md-input-container>
 						<md-input-container>
 							<label translate="patient.objective"></label>
-							<input ng-model="patientCtrl.consultRequest.soapNote.objective" title="patient.objective" ></input>
+							<input ng-model="patientCtrl.consultRequest.soapNote.objective" title="{{'patient.objective'| translate}}" ></input>
 						</md-input-container>
 						<md-input-container>
 							<label translate="patient.plan"></label>
-							<input ng-model="patientCtrl.consultRequest.soapNote.plan" title="patient.objective" ></input>
+							<input ng-model="patientCtrl.consultRequest.soapNote.plan" title="{{'patient.objective'| translate}}" ></input>
 						</md-input-container>
 						<div layout="column">
 							<strong translate="patient.diagnostics"></strong>
 							<div layout "row" layout-align="space-between start" ng-repeat="diagnostic in patientCtrl.consultRequest.diagnostics">
 								<li>{{ diagnostic.details }}</li>
 								<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delDiagnostic($index)"> 
-							    	<ng-md-icon icon="clear" aria-label="{{patient.del-diagnostic}}" style="fill: red"></ng-md-icon>
+							    	<ng-md-icon icon="clear" aria-label="{{'patient.del-diagnostic'| translate}}" style="fill: red"></ng-md-icon>
 							    </md-button>
 							</div>
 						</div>
@@ -94,11 +94,11 @@
 							<div layout="column" flex="90">
 								<md-input-container>
 									<label translate="patient.add-diagnostic"></label>
-									<input ng-model="patientCtrl.diagnosticRequest.details" title="patient.add-diagnostic" ></input>
+									<input ng-model="patientCtrl.diagnosticRequest.details" title="{{'patient.add-diagnostic'|translate}}" ></input>
 								</md-input-container>
 							</div>
 							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addDiagnostic()"> 
-						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-diagnostic}}" style="fill: green"></ng-md-icon>
+						    	<ng-md-icon icon="add_circle_outline" aria-label="{{'patient.add-diagnostic'| translate}}" style="fill: green"></ng-md-icon>
 						    </md-button>
 						</div>
 
@@ -107,22 +107,22 @@
 							<div layout "row" layout-align="space-between start" ng-repeat="instruction in patientCtrl.consultRequest.instructions">
 								<li>{{ instruction.instruction }}</li>
 								<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delInstruction($index)"> 
-							    	<ng-md-icon icon="clear" aria-label="{{patient.del-instruction}}" style="fill: red"></ng-md-icon>
+							    	<ng-md-icon icon="clear" aria-label="{{'patient.del-instruction' | translate}}" style="fill: red"></ng-md-icon>
 							    </md-button>
 							</div>
 						</div>
 						<div layout="row">
 							<div layout="column" flex="90">
 								
-									<md-input-container>
-										<label translate="patient.add-instruction"></label>
-										<input ng-model="patientCtrl.instructionRequest.instruction" title="patient.add-instruction" ></input>
-									</md-input-container>
+								<md-input-container>
+									<label translate="patient.add-instruction"></label>
+									<input ng-model="patientCtrl.instructionRequest.instruction" title="{{'patient.add-instruction'| translate}}" ></input>
+								</md-input-container>
 								
 							</div>
-									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addInstruction()"> 
-								    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-instruction}}" style="fill: green"></ng-md-icon>
-								    </md-button>
+								<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addInstruction()"> 
+							    	<ng-md-icon icon="add_circle_outline" aria-label="{{'patient.add-instruction'| translate}}" style="fill: green"></ng-md-icon>
+							    </md-button>
 						</div>
 						
 
@@ -131,7 +131,7 @@
 								<div layout="row" ng-repeat="prescription in patientCtrl.consultRequest.prescriptions" layout-align="space-between center">
 									<div layout="column">{{ prescription.drug }} {{ prescription.indication.description }}</div>
 									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delPrescription($index)"> 
-								    	<ng-md-icon icon="clear" aria-label="{{patient.del-prescription}}" style="fill: red"></ng-md-icon>
+								    	<ng-md-icon icon="clear" aria-label="{{'patient.del-prescription'| translate}}" style="fill: red"></ng-md-icon>
 								    </md-button>
 								</div>
 								<div layout="row">
@@ -142,17 +142,17 @@
 									</md-select>
 									<md-input-container>
 										<label translate="patient.indication"></label>
-										<input ng-model="patientCtrl.prescriptionRequest.indication.description" title="patient.indication" required></input>
+										<input ng-model="patientCtrl.prescriptionRequest.indication.description" title="{{'patient.indication'| translate}}"></input>
 									</md-input-container>
 									<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addPrescription()"> 
-								    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-prescription}}" style="fill: green"></ng-md-icon>
+								    	<ng-md-icon icon="add_circle_outline" aria-label="{{'patient.add-prescription'| translate}}" style="fill: green"></ng-md-icon>
 								    </md-button>
 								</div>
 							</div>
 						</div>
 						<md-input-container>
 							<label translate="patient.comments"></label>
-							<textarea ng-model="patientCtrl.consultRequest.soapNote.comments" title="patient.comments" ></textarea>
+							<textarea ng-model="patientCtrl.consultRequest.soapNote.comments" title="{{'patient.comments'| translate}}" ></textarea>
 						</md-input-container>
 					</div>
 
@@ -172,21 +172,23 @@
 							</div>
 		    			</div>
 		    			<div layout="row">
-		    				<md-select ng-model="patientCtrl.vitalsign.name" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
-								<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals" ng-click="patientCtrl.hideOther()">
-									{{ vitalsign.name }}
-								</md-option>
-								<md-option ng-value="{{patientCtrl.vitalsign.name2}}" ng-click="patientCtrl.showOther()">
-									{{ 'patient.other' | translate}}
-								</md-option>
-							</md-select>
+		    				<md-input-container>
+			    				<md-select ng-model="patientCtrl.vitalsign.name" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
+				    				<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals" ng-click="patientCtrl.hideOther()">
+										{{ vitalsign.name }}
+									</md-option>
+									<md-option ng-click="patientCtrl.showOther()">
+										{{ 'patient.other' | translate}}
+									</md-option>
+								</md-select>
+							</md-input-container>
 							<md-input-container ng-show="patientCtrl.otherOps">
 								<label translate="patient.vs-name"></label>
-								<textarea ng-model="patientCtrl.vitalsign.name2" title="patient.description-vs" ></textarea>
+								<textarea ng-model="patientCtrl.vitalsign.name2" title="{{'patient.description-vs'| translate}}" ></textarea>
 							</md-input-container>
 							<md-input-container>
 								<label translate="patient.description-vs"></label>
-								<textarea ng-model="patientCtrl.vitalsign.description" title="patient.description-vs" ></textarea>
+								<textarea ng-model="patientCtrl.vitalsign.description" title="{{'patient.description-vs'| translate}}" ></textarea>
 							</md-input-container>
 							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.addVitalSign()"> 
 						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-vitalsign}}" style="fill: green"></ng-md-icon>
@@ -204,9 +206,9 @@
 		    	</ng-form>
 		    	<div>
 		    		<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult()" layout-align="center center"> 
-			    		<ng-md-icon icon="assignment_turned_in" aria-label="{{patient.save-consult}}" style="fill: green"></ng-md-icon>
+			    		<ng-md-icon icon="assignment_turned_in" aria-label="{{'patient.save-consult'| translate}}" style="fill: green"></ng-md-icon>
 			    	</md-button>
-			    	<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult()" layout-align="center center"> 
+			    	<md-button class="md-icon-button md-raised" ng-click="patientCtrl.deleteConsult()" layout-align="center center"> 
 			    		<ng-md-icon icon="delete" aria-label="{{patient.save-consult}}" style="fill: red"></ng-md-icon>
 			    	</md-button>
 		    	</div>
