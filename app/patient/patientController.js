@@ -1,6 +1,6 @@
 (function(){
 	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope, 
-		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DrugRepository,VitalSignRepository){
+		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DiagnosticRepository, DrugRepository, VitalSignRepository, SoapNoteRepository){
 		
 		var global = this;
 		this.inConsult = false;
@@ -22,10 +22,22 @@
 
 		PatientRepository.patient.get({idUser:$stateParams.idPatient}).$promise.then(function(data){
 			global.patient = data;
-
 			global.works = CostCenterRepository.costCenterUser.get({idUser:data.user.id});
 			global.post = PostRepository.postUser.get({idUser:data.user.id});
-			global.consults = ConsultRepository.consultHistory.query({idHistory:data.history.id});
+			ConsultRepository.consultByPatient.query({idPatient:data.id}).$promise.then(function(data2){
+				//console.log(data2);
+				global.consults = data2;
+				global.consults.forEach(function(consult){
+					//console.log(consult);
+					SoapNoteRepository.soapnote.get({idSoapNote: consult.id}).$promise.then(function(soap){
+						consult.soapnote = soap;
+					});
+
+					DiagnosticRepository.byconsult.query({idConsult: consult.id}).$promise.then(function(diagnostics){
+						consult.diagnostics = diagnostics;
+					});
+				});
+			});
 			
 		});	
 
@@ -98,18 +110,20 @@
 		};
 
 		this.hideOther = function(name){
-			global.vitalsign = name;
+			global.vitalsign.name = name;
 			global.vitalsign.name2 = null;
 			global.otherOps = false;
 		},
 
 		this.addVitalSign = function(){
 			console.log("En addVitalSign");
+
 			if(global.vitalsign.name2 != null){
 				console.log("En el 1er if");
 				console.log("name2:");
 				console.log(global.vitalsign.name2);
-				global.vitalsign.name = global.vitalsign.name2;
+				
+				global.hideOther(global.vitalsign.name2);
 			} else {
 				console.log("No entró al primer if");
 			};
@@ -127,6 +141,10 @@
 
 		this.delVitalSign = function(index){
 			global.consultRequest.vitalsigns.splice(index,1);
+		};
+
+		this.goToConsult = function(consult){
+			console.log("En goToConsult");
 		};
 	});
 })()

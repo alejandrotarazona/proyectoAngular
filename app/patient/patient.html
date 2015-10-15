@@ -1,5 +1,5 @@
 <div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
-	<div layout="column" flex="80">
+	<div layout="column" flex="90">
 		<!-- Info básica -->
 		<div layout="row" layout-margin layout-fill layout-padding layout-align="space-between start">
 			<div layout-align="start end" flex="20">
@@ -91,7 +91,7 @@
 							</div>
 						</div>
 						<div layout="row">
-							<div layout="column" flex="90">
+							<div layout="column" flex="85">
 								<md-input-container>
 									<label translate="patient.add-diagnostic"></label>
 									<input ng-model="patientCtrl.diagnosticRequest.details" title="{{'patient.add-diagnostic'|translate}}" ></input>
@@ -112,7 +112,7 @@
 							</div>
 						</div>
 						<div layout="row">
-							<div layout="column" flex="90">
+							<div layout="column" flex="85">
 								
 								<md-input-container>
 									<label translate="patient.add-instruction"></label>
@@ -214,9 +214,25 @@
 		    	</div>
 		    </div>
 		</div>
+		<br>
+		<br>
 		<!-- Historial de consultas -->
-		<div layout="row" layout-align="center center" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'" flex>
-
+		<div ng-show="patientCtrl.consults" layout="row" layout-align="space-between center" flex="90">
+			<div layout="column" layout-align="center center" flex="100">
+				<strong translate="patient.previous-consults"></strong>
+				<div layout="row" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'">
+					<div layout="column" layout-align="center start" flex>
+						<p><strong translate="patient.date"></strong>: {{ consult.consultDate | date:'dd/MM/yyyy' }}</p>
+						<strong translate="patient.diagnostics" ng-show="consult.diagnostics"></strong> 
+						<div ng-repeat="diagnostic in consult.diagnostics | orderBy:'details'">
+							{{diagnostic.details}}
+						</div>
+					</div>
+					<md-button class="md-icon-button md-raised">
+				    	<ng-md-icon icon="search" ng-click="patientCtrl.goToConsult(consult)" aria-label="Open Chat"></ng-md-icon>
+				    </md-button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

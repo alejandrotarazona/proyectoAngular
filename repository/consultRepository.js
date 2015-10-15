@@ -8,7 +8,7 @@
 					}
 				}),
 
-			consultHistory: $resource('http\://localhost\:8080/occupational/consult/byhistory/:idHistory/',{idHistory: '@idHistory'})
+			consultByPatient: $resource('http\://localhost\:8080/occupational/consult/bypatient/:idPatient/',{idPatient: '@idPatient'})
 		}
 	});
 })()

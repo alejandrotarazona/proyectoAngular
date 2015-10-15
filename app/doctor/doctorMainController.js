@@ -1,9 +1,17 @@
 (function(){
 	hxplus.controller('DoctorMainController',function($state,$stateParams,$http,DoctorRepository,PatientRepository){
 
+        var global = this;
+
 		this.doctor = DoctorRepository.doctorUser.get({id: $stateParams.idLogged});
-        this.doctor.patients = PatientRepository.patients.query({id: $stateParams.idLogged})
-        this.patients = this.doctor.patients;
+        this.doctor.patients = {};
+        this.patients = {};
+
+        PatientRepository.patients.query({id: $stateParams.idLogged}).$promise.then(function(data){
+            //console.log(data);
+            global.doctor.patients = data;
+            global.patients = global.doctor.patients;
+        });
 
 /*    console.log("Id del Loggeado");
     console.log($stateParams.idLog);

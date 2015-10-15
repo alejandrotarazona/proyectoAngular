@@ -7,7 +7,7 @@
 
 		<span translate="doctor.patients"></span>
 		<md-list>
-			<md-list-item ng-repeat="patient in doctorCtrl.patients | orderBy:'user.lastName'" layout-align="space-around center">
+			<md-list-item ng-repeat="patient in doctorCtrl.patients | orderBy:'user.firstName' | orderBy:'user.lastName' " layout-align="space-around center">
 			    <!--img alt="{{ patient.username }}" ng-src="{{ patient.img }}" class="md-avatar" /-->
 			    <p>{{ patient.user.lastName }} {{ patient.user.firstName }}</p>
 			    <md-button class="md-icon-button md-raised" ng-click="doctorCtrl.goToPatient(patient)" > 
