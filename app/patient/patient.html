@@ -217,22 +217,23 @@
 		<br>
 		<br>
 		<!-- Historial de consultas -->
-		<div ng-show="patientCtrl.consults" layout="row" layout-align="space-between center" flex="90">
-			<div layout="column" layout-align="center center" flex="100">
+		<div layout="row" layout-align="center center">
+			<div layout="column" lauoyt-align="center center">
 				<strong translate="patient.previous-consults"></strong>
-				<div layout="row" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'">
-					<div layout="column" layout-align="center start" flex>
-						<p><strong translate="patient.date"></strong>: {{ consult.consultDate | date:'dd/MM/yyyy' }}</p>
-						<strong translate="patient.diagnostics" ng-show="consult.diagnostics"></strong> 
-						<div ng-repeat="diagnostic in consult.diagnostics | orderBy:'details'">
-							{{diagnostic.details}}
-						</div>
-					</div>
-					<md-button class="md-icon-button md-raised">
-				    	<ng-md-icon icon="search" ng-click="patientCtrl.goToConsult(consult)" aria-label="Open Chat"></ng-md-icon>
-				    </md-button>
-				</div>
 			</div>
+		</div>
+		<div layout="row" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'" layout-align="center center">
+			<div layout="column" layout-align="center start" flex="50">
+				<p><strong translate="patient.date"></strong>: {{ consult.consultDate | date:'dd/MM/yyyy' }}</p>
+				<strong translate="patient.diagnostics" ng-show="{{consult.diagnostics}}"></strong> 
+				<div ng-repeat="diagnostic in consult.diagnostics | orderBy:'details'">
+					{{diagnostic.details}}
+				</div>
+				<span translate="patient.no-diagnostics" ng-hide="{{consult.diagnostics}}"></span>
+			</div>
+			<md-button class="md-icon-button md-raised">
+		    	<ng-md-icon icon="search" ng-click="patientCtrl.goToConsult(consult)" aria-label="Open Chat"></ng-md-icon>
+		    </md-button>
 		</div>
 	</div>
 </div>

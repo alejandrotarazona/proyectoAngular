@@ -13,7 +13,7 @@
 			formulario.patientRequest.history.habits = [];
 			formulario.patientRequest.history.vaccines = [];
 
-			formulario.patientRequest.doctors = [DoctorRepository.doctorUser.get({id: $stateParams.idLog})];
+			formulario.patientRequest.doctors = [DoctorRepository.doctorUser.get({id: $stateParams.idLogged})];
 
 			//var historyRequest = this.patientRequest.history;
 

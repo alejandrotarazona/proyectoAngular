@@ -8,7 +8,7 @@
 					}
 				}),
 
-			doctorAddPatient: $resource('http\://localhost\:8080/occupational/doctor/:id/patient/:idPatient',{id: '@id', idPatient:'@idPatient'},
+			doctorAddPatient: $resource('http\://localhost\:8080/occupational/doctor/:idDoctor/patient/:idPatient',{idDoctor: '@:idDoctor', idPatient:'@idPatient'},
 				{
 					'update':{
 						method:'PUT',

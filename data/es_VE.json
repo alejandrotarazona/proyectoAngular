@@ -172,6 +172,7 @@
 		"exams-tab"			: "Exámenes",
 		"files-tab"			: "Archivos",
 		"previous-consults" : "Consulta(s) previa(s)",
-		"date"				: "Fecha"
+		"date"				: "Fecha",
+		"no-diagnostics"	: "No se hizo ningún diagnóstico"
 	}
 }

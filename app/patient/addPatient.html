@@ -3,7 +3,7 @@
 	<form name="patientForm" ng-submit="patientCtrl.submit(patientRequest.id,patientCtrl.doctor.id)">
 		<md-input-container layout-align="center center">
 			<md-select ng-model="patientRequest" placeholder="Elija un paciente registrado">
-				<md-option ng-value="patient" ng-repeat="patient in patientCtrl.listPatients">{{patient.user.lastName}} {{patient.user.firstName}}
+				<md-option ng-value="patient" ng-repeat="patient in patientCtrl.listPatients | orderBy:'user.firstName' | orderBy:'user.lastName'">{{patient.user.lastName}} {{patient.user.firstName}}
 				</md-option>
 			</md-select>
 		</md-input-container>

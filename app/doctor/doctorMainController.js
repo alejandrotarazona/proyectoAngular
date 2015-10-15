@@ -32,6 +32,10 @@
             console.log("En programar Consulta");
             console.log(patient.user.firstName);
         };
+
+        this.addPatient = function(){
+            $state.go('home.addPatient');
+        };
     });
 
 })()
