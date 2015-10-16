@@ -30,23 +30,24 @@
 				</div>
 				<!--<span>{{ patientCtrl.patient.user.post }}</span-->
 			</div>
+			<!-- Menú historia -->
 			<div layout="column" layout-align="start center" flex="20">
-				<md-button class="md-raised" aria-label="patient.user.see-background">
+				<md-button class="md-raised" aria-label="{{patient.user.see-background | translate}}" ng-click="patientCtrl.openHistory(1)">
 					<span translate="patient.user.see-background"></span>
 					<ng-md-icon icon="history" style="fill: gray">
 					</ng-md-icon>
 				</md-button>
-				<md-button class="md-raised" aria-label="patient.user.see-habit">
+				<md-button class="md-raised" aria-label="{{patient.user.see-habit | translate}}" ng-click="patientCtrl.openHistory(2)">
 					<span translate="patient.user.see-habit"></span>
 					<ng-md-icon icon="sync_problem" style="fill: gray">
 					</ng-md-icon>
 				</md-button>
-				<md-button class="md-raised" aria-label="patient.user.see-vaccine">
+				<md-button class="md-raised" aria-label="{{patient.user.see-vaccine | translate}}" ng-click="patientCtrl.openHistory(3)">
 					<span translate="patient.user.see-vaccine"></span>
 					<ng-md-icon icon="healing" style="fill: gray">
 					</ng-md-icon>
 				</md-button>
-				<md-button class="md-raised" aria-label="patient.user.see-allergy">
+				<md-button class="md-raised" aria-label="{{patient.user.see-allergy | translate}}" ng-click="patientCtrl.openHistory(4)">
 					<span translate="patient.user.see-allergy"></span>
 					<ng-md-icon icon="warning" style="fill: gray">
 					</ng-md-icon>
@@ -203,13 +204,14 @@
 		    		<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab(4)" layout="column" flex="90">
 		    			Files
 		    		</div>
-		    	</ng-form>
+
+			    </ng-form>
 		    	<div>
-		    		<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult()" layout-align="center center"> 
+		    		<md-button class="md-icon-button md-raised" ng-click="patientCtrl.saveConsult(patientCtrl.consultRequest)" layout-align="center center"> 
 			    		<ng-md-icon icon="assignment_turned_in" aria-label="{{'patient.save-consult'| translate}}" style="fill: green"></ng-md-icon>
 			    	</md-button>
 			    	<md-button class="md-icon-button md-raised" ng-click="patientCtrl.deleteConsult()" layout-align="center center"> 
-			    		<ng-md-icon icon="delete" aria-label="{{patient.save-consult}}" style="fill: red"></ng-md-icon>
+			    		<ng-md-icon icon="delete" aria-label="{{patient.del-consult}}" style="fill: red"></ng-md-icon>
 			    	</md-button>
 		    	</div>
 		    </div>
@@ -231,8 +233,8 @@
 				</div>
 				<span translate="patient.no-diagnostics" ng-hide="{{consult.diagnostics}}"></span>
 			</div>
-			<md-button class="md-icon-button md-raised">
-		    	<ng-md-icon icon="search" ng-click="patientCtrl.goToConsult(consult)" aria-label="Open Chat"></ng-md-icon>
+			<md-button class="md-icon-button md-raised" ng-click="patientCtrl.goToConsult($index)">
+		    	<ng-md-icon icon="search" aria-label="Open Chat"></ng-md-icon>
 		    </md-button>
 		</div>
 	</div>

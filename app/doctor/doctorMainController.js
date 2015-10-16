@@ -34,7 +34,6 @@
         };
 
         this.addPatient = function(){
-            console.log("Un cambio")
             $state.go('home.addPatient');
         };
     });

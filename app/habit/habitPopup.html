@@ -1,0 +1,11 @@
+<div layout="row" ng-controller="HabitPopupController as habitCtrl" layout-margin layout-fill layout-padding layout-align="center center" flex="80">
+	<div layout="column" flex="70" layout-align="space-around start">
+		<h1 translate="patient.user.see-habit"></h1>
+		<div layout="column" ng-repeat="habit in habitCtrl.habits | orderBy:'name'">
+			<br>
+			<strong>{{ habit.name }}</strong>
+			<span>{{habit.frecuency}}</span>
+		</div>
+		<br>
+	</div>
+</div>

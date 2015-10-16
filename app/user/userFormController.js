@@ -1,6 +1,6 @@
 (function(){
 	hxplus.controller('UserFormController', function($state, $stateParams, UserRepository){
-		this.user = UserRepository.user.get({id: $stateParams.idLog});
+		this.user = UserRepository.user.get({id: $stateParams.idLogged});
 
 		this.submit = function(userRequest){
 			UserRepository.user.update({id:userRequest.id}, userRequest).$promise.then(function(data){

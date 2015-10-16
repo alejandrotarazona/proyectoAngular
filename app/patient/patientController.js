@@ -1,5 +1,6 @@
 (function(){
-	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope, 
+	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope,$mdDialog,
+		
 		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DiagnosticRepository, DrugRepository, VitalSignRepository, SoapNoteRepository){
 		
 		var global = this;
@@ -41,6 +42,28 @@
 			
 		});	
 
+		this.openHistory = function(type){
+			/*console.log("En openHistory");
+			console.log(type);
+
+			console.log("Id Paciente");
+			console.log($stateParams.idPatient);
+			*/
+			var templates = [
+				'app/background/backgroundPopup.html',
+				'app/habit/habitPopup.html',
+				'app/vaccine/vaccinePopup.html',
+				'app/allergy/allergyPopup.html'
+			];
+
+			$mdDialog.show({
+		      
+		      templateUrl: templates[type-1],
+		      parent: angular.element(document.body),
+		      clickOutsideToClose:true
+		    });
+		};
+
 		this.consult = function(){
 			global.inConsult = true;
 		};
@@ -51,9 +74,9 @@
 
 		this.isSelectedInConsultTab = function(checkTab){
 			return global.inConsultTab === checkTab;
-		},
+		};
 
-		this.saveConsult = function(){
+		this.saveConsult = function(consultRequest){
 			this.setInConsultTab(1);
 			global.inConsult = false;
 		};
@@ -71,7 +94,7 @@
 		this.addDiagnostic = function(){
 			if(global.diagnosticRequest != null && global.diagnosticRequest.details != null){
 				global.consultRequest.diagnostics.push(global.diagnosticRequest);
-				global.diagnosticRequest = null;
+				global.diagnosticRequest = {};
 			}
 
 			//global.diagnosticRequest.$setPristine();
@@ -143,8 +166,18 @@
 			global.consultRequest.vitalsigns.splice(index,1);
 		};
 
-		this.goToConsult = function(consult){
-			console.log("En goToConsult");
+		this.goToConsult = function(index){
+
+			$mdDialog.show({
+		      
+		      templateUrl: 'app/consult/consultPopup.html',
+		      parent : angular.element(document.body),
+		      preserveScope : true ,
+		      locals : {variable : index},
+		      //bindToController:true,
+		      clickOutsideToClose:true,
+		      escapeToClose:true
+		    });
 		};
 	});
 })()

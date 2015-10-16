@@ -17,13 +17,7 @@
           <a ui-sref="home.doctor({idDoc: home.user.id})" ui-sref-opts="{idDoc: home.user.id}">
             <span translate>home-bar.doctor</span>
           </a>
-        </div>
-      	<div flex>
-  	      <a ui-sref="home.main">
-  	      	<span translate>home-bar.1stbutton</span>
-  	      </a>
-        </div>
-      	
+        </div>      	
         <span flex></span>
 
         <!-- Administración de Perfil -->
@@ -40,12 +34,6 @@
               <ng-md-icon icon="settings" style="fill: white"></ng-md-icon>
             </md-button>
             <md-menu-content width="2">
-              <md-menu-item ng-repeat="item in [1, 2, 3]">
-                <md-button ng-click="home.announceClick($index)" translate>
-                  <p><span translate="home-bar.settings.option"></span> {{item}}</p>
-                </md-button>
-              </md-menu-item>
-              <md-menu-divider></md-menu-divider>
               <md-menu-item>
                 <md-button aria-label="ESP" ng-click="home.switchLanguage('es_VE')">
                   <span class="flag-icon flag-icon-ve"></span>

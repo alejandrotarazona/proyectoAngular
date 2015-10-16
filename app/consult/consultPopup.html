@@ -1,0 +1,24 @@
+<div layout="row" ng-controller="ConsultPopupController as consultCtrl" layout-margin layout-fill layout-padding layout-align="center center" flex="100">
+	<div layout="column" flex="100" layout-align="center start">
+
+		<div layout="row" layout-align="center center">
+    		<md-button class="md-primary" ng-disabled="consultCtrl.isSelectedInConsultTab(1)" ng-click="consultCtrl.setInConsultTab(1)">{{ 'patient.soap-tab' | translate }}</md-button>
+    		<md-button class="md-primary" ng-disabled="consultCtrl.isSelectedInConsultTab(2)" ng-click="consultCtrl.setInConsultTab(2)">{{ 'patient.vital-tab' | translate }}</md-button>
+    		<md-button class="md-primary" ng-disabled="consultCtrl.isSelectedInConsultTab(3)" ng-click="consultCtrl.setInConsultTab(3)">{{ 'patient.exams-tab' | translate }}</md-button>
+    		<md-button class="md-primary" ng-disabled="consultCtrl.isSelectedInConsultTab(4)" ng-click="consultCtrl.setInConsultTab(4)">{{ 'patient.files-tab' | translate }}</md-button>
+    	</div>
+
+		<div name="Resume" ng-show="consultCtrl.isSelectedInConsultTab(1)" layout="column" flex="100">
+			Resume
+		</div>
+		<div name="Vitals" ng-show="consultCtrl.isSelectedInConsultTab(2)" layout="column" flex="100">
+			Vitals
+		</div>
+		<div name="Exams" ng-show="consultCtrl.isSelectedInConsultTab(3)" layout="column" flex="100">
+			Exams
+		</div>
+		<div name="Files" ng-show="consultCtrl.isSelectedInConsultTab(4)" layout="column" flex="100">
+			Files
+		</div>
+	</div>
+</div>

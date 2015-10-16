@@ -1,0 +1,12 @@
+<div layout="row" ng-controller="AllergyPopupController as allergyCtrl" layout-margin layout-fill layout-padding layout-align="center center" flex="80">
+	<div layout="column" flex="70" layout-align="space-around start">
+		<h1 translate="patient.user.see-allergy"></h1>
+		<div layout="column" ng-repeat="allergy in allergyCtrl.allergies | orderBy:'name'">
+			<br>
+			<strong>{{ allergy.name }}</strong>
+			<span>{{allergy.severity}}</span>
+			<span>{{allergy.description}}</span>
+		</div>
+		<br>
+	</div>
+</div>
