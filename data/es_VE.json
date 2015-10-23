@@ -123,6 +123,8 @@
 	},
 
 	"patient"			:{
+		"man"			: "Hombre",
+		"woman"			: "Mujer",
 		"new-consult"	: "Crear Consulta",
 		"next-consult"	: "Programar Consulta",
 		"first-name"	: "@:profile-edit.first-name",
@@ -132,6 +134,7 @@
 		"rif"			: "@:profile.rif",
 
 		"user"			:{
+			"age"			: "años de edad",
 			"phone"			: "@:profile.phone",
 			"email"			: "@:profile.email",
 			"address"		: "@:profile.address",
@@ -149,15 +152,15 @@
 		"soap-tab"			: "Resúmen General",
 		"subjective"		: "¿Qué dice el paciente?",
 		"objective"			: "¿Qué se puede observar?",
-		"plan"				: "Plan de tratamiento",
-		"comments"			: "Comentarios",
+		"plan"				: "Plan de tratamiento:",
+		"comments"			: "Comentarios:",
 		"diagnostics"		: "Diagnóstico(s):",
 		"add-diagnostic"	: "Agregue un nuevo diagnóstico",
 		"del-diagnostic"	: "Borrar este diagnóstico",
 		"instructions"		: "Instrucción(es):",
 		"add-instruction"	: "Agregue una nueva instrucción",
 		"del-instruction"	: "Borrar esta instrucción",
-		"prescriptions"		: "Prescripción(es)",
+		"prescriptions"		: "Prescripción(es):",
 		"indication"		: "Indicación",
 		"add-prescription"	: "Agrege una nueva prescripción",
 		"del-prescription" 	: "Borrar esta prescripción",
@@ -169,10 +172,52 @@
 		"add-vitalsign"		: "Agregar Signo Vital",
 		"vitalsign"			: "Signo vital",
 		"other"				: "Otro",
-		"exams-tab"			: "Exámenes",
-		"files-tab"			: "Archivos",
+		"exams-tab"			: "Ordenar Exámenes",
+		"examRequest"		: "Nombre o tipo de exámen a solicitar:",
+		"add-exam"			: "Agregar un nuevo examen",
+		"files-tab"			: "Recibir Exámenes",
+		"no-pending-exams"	: "No posee exámenes pendientes",
+		"upload-file"		: "Subir archivo",
 		"previous-consults" : "Consulta(s) previa(s)",
 		"date"				: "Fecha",
 		"no-diagnostics"	: "No se hizo ningún diagnóstico"
+	},
+
+	"consult"		:{
+		"soap-tab"			: "@:patient.soap-tab",
+		"resume"			: "Resúmen",
+		"subjective"		: "¿Qué dijo el paciente?",
+		"objective"			: "¿Qué se pudo observar?",
+		"plan"				: "@:patient.plan",
+		"comments"			: "@:patient.comments",
+		"diagnostics"		: "@:patient.diagnostics",
+		"no-diagnostics"	: "@:patient.no-diagnostics",
+		"instructions"		: "@:patient.instructions",
+		"no-instructions"	: "No se recomendaron instrucciones al paciente",
+		"prescriptions"		: "@:patient.prescriptions",
+		"no-prescriptions"	: "No se realizaron prescripciones médicas",
+		"indication"		: "@:patient.indication",
+
+		"vital-tab"			: "@:patient.vital-tab",
+		"vitalsign"			: "@:patient.vitalsign",
+		"no-vitalsigns"		: "No se tomaron signos vitales en la consulta",
+		"description-vs"	: "@:patient.description-vs",
+
+		"exams-tab"			: "Exámenes ordenados:",
+		"no-exams-ordered"	: "No se ordenaron exámenes",
+		"download"			: "Descargar Examen",
+
+		"files-tab"			: "Exámenes recibidos:",
+		"no-exams-recieved"	: "No se recibieron exámenes",
+		"date"				: "@:patient.date",
+
+		"inform-tab"		: "Informe médico",
+
+		"date-been"			: "Hace",
+		"date-years"		: "año(s)",
+		"date-months"		: "mes(es)",
+		"date-days"			: "día(s)",
+		"date-hours"		: "hora(s)",
+		"date-minutes"		: "menos de una hora"
 	}
 }

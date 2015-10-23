@@ -1,5 +1,6 @@
 <div layout="row" ng-controller="PatientController as patientCtrl" layout-margin layout-fill layout-padding layout-align="center center">
 	<div layout="column" flex="90">
+		
 		<!-- Info básica -->
 		<div layout="row" layout-margin layout-fill layout-padding layout-align="space-between start">
 			<div layout-align="start end" flex="20">
@@ -9,18 +10,13 @@
 					<img ng-src="{{ defaultImg.url }}"  class="md-avatar">
 					<strong>NO-FOTO</strong>
 				</div>
-			
 			</div>
-
 			<div layout="column" layout-align="center center" flex="60">
-				<strong>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</strong>
-				<p>({{ patientCtrl.post.name }})</p>
-				<br>
-				<p><strong translate="patient.user.email"></strong>: {{ patientCtrl.patient.user.email }}</p>
-				
-				<p><strong translate="patient.user.costcenter"></strong>: {{patientCtrl.works.address}}</p>
-				<p><strong translate="patient.user.phone"></strong>: {{ patientCtrl.patient.user.phonenumber }}<div ng-hide="patientCtrl.patient.user.phonenumber"><span translate="patient.user.nophone"></span></div></p>
-				
+				<h1>{{ patientCtrl.patient.user.firstName }} {{ patientCtrl.patient.user.lastName }}</h1>
+				<span ng-show="patientCtrl.masculin(patientCtrl.patient.user.sex)">{{ 'patient.man' | translate }}</span>
+				<span ng-hide="patientCtrl.masculin(patientCtrl.patient.user.sex)">{{ 'patient.woman' | translate }}</span>
+				<span>{{patientCtrl.age()}} {{'patient.user.age' | translate}}</span>
+				<div><strong translate="patient.user.email"></strong>: {{ patientCtrl.patient.user.email }}</div>
 				<strong translate="patient.user.diagnostics"></strong>
 				<div ng-hide="patientCtrl.diagnostics">
 					<span translate="patient.user.nodiagnostics"></span>
@@ -28,8 +24,8 @@
 				<div ng-repeat="diasnostic in patientCtrl.diagnostics">
 					{{ diagnostic.details }}
 				</div>
-				<!--<span>{{ patientCtrl.patient.user.post }}</span-->
 			</div>
+
 			<!-- Menú historia -->
 			<div layout="column" layout-align="start center" flex="20">
 				<md-button class="md-raised" aria-label="{{patient.user.see-background | translate}}" ng-click="patientCtrl.openHistory(1)">
@@ -55,21 +51,31 @@
 
 			</div>
 		</div>
+
 		<!-- Una nueva consulta -->	
 		<div layout="row" layout-align="center center">
-			<md-button class="md-icon-button md-raised" ng-click="patientCtrl.consult()" ng-hide="patientCtrl.inConsult"> 
-		    	<ng-md-icon icon="note_add" aria-label="{{patient.new-consult}}" style="fill: gray"></ng-md-icon>
+			<md-button class="md-button md-raised" ng-click="patientCtrl.createConsult()" ng-hide="patientCtrl.inConsult">
+				<label translate="patient.new-consult"></label>
+		    	<ng-md-icon icon="note_add" aria-label="{{patient.new-consult}}" style="fill: green"></ng-md-icon>
 		    </md-button>
 		    <div layout="column" ng-show="patientCtrl.inConsult" layout-align="center center" flex="100">
 		    	<div layout="row" layout-align="center center">
-		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(1)" ng-click="patientCtrl.setInConsultTab(1)">{{ 'patient.soap-tab' | translate }}</md-button>
-		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(2)" ng-click="patientCtrl.setInConsultTab(2)">{{ 'patient.vital-tab' | translate }}</md-button>
-		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(3)" ng-click="patientCtrl.setInConsultTab(3)">{{ 'patient.exams-tab' | translate }}</md-button>
-		    		<md-button class="md-primary" ng-disabled="patientCtrl.isSelectedInConsultTab(4)" ng-click="patientCtrl.setInConsultTab(4)">{{ 'patient.files-tab' | translate }}</md-button>
+		    		<md-button class="md-raised md-primary" ng-disabled="patientCtrl.isSelectedCreateConsultTab(1)" ng-click="patientCtrl.setCreateConsultTab(1)">
+		    			{{ 'patient.soap-tab' | translate }}
+		    		</md-button>
+		    		<md-button class="md-raised md-primary" ng-disabled="patientCtrl.isSelectedCreateConsultTab(2)" ng-click="patientCtrl.setCreateConsultTab(2)">
+		    			{{ 'patient.vital-tab' | translate }}
+		    		</md-button>
+		    		<md-button class="md-raised md-primary" ng-disabled="patientCtrl.isSelectedCreateConsultTab(3)" ng-click="patientCtrl.setCreateConsultTab(3)">
+		    			{{ 'patient.exams-tab' | translate }}
+		    		</md-button>
+		    		<md-button class="md-raised md-primary" ng-disabled="patientCtrl.isSelectedCreateConsultTab(4)" ng-click="patientCtrl.setCreateConsultTab(4)">
+		    			{{ 'patient.files-tab' | translate }}
+		    		</md-button>
 		    	</div>
 
 		    	<ng-form name="patientCtrl.consultForm" layuout="column" flex="100">
-		    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab(1)" layout="column" flex="90">
+		    		<div name="Resume" ng-show="patientCtrl.isSelectedCreateConsultTab(1) && patientCtrl.inConsult" layout="column" flex="90">
 		    			<md-input-container>
 							<label translate="patient.subjective"></label>
 							<input ng-model="patientCtrl.consultRequest.soapNote.subjective" title="{{'patient.subjective' | translate}}" ></input>
@@ -157,11 +163,10 @@
 						</md-input-container>
 					</div>
 
-		    		<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab(2)" layout="column" flex="90">
+		    		<div name="Vitals" ng-show="patientCtrl.isSelectedCreateConsultTab(2) && patientCtrl.inConsult" layout="column" flex="90">
 		    			<div layout="row">
 		    				<div layout ="column" layout-align="center start" flex="33">Nombre</div>
 		    				<div layout ="column" layout-align="center center" flex="33">Descripción</div>
-		    				
 		    			</div>
 		    			<div layout="row" ng-repeat= "vitalsign in patientCtrl.consultRequest.vitalsigns">
 		    				<div layout ="column" layout-align="center start" flex="33">{{ vitalsign.name }}</div>
@@ -175,8 +180,8 @@
 		    			<div layout="row">
 		    				<md-input-container>
 			    				<md-select ng-model="patientCtrl.vitalsign.name" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
-				    				<md-option ng-value="vitalsign.name" ng-repeat="vitalsign in patientCtrl.vitals" ng-click="patientCtrl.hideOther()">
-										{{ vitalsign.name }}
+				    				<md-option ng-value="vitalsign" ng-repeat="vitalsign in patientCtrl.vitals" ng-click="patientCtrl.hideOther(vitalsign)">
+										{{ vitalsign }}
 									</md-option>
 									<md-option ng-click="patientCtrl.showOther()">
 										{{ 'patient.other' | translate}}
@@ -197,12 +202,36 @@
 		    			</div>
 		    		</div>
 
-		    		<div name="Exams" ng-show="patientCtrl.isSelectedInConsultTab(3)" layout="column" flex="90">
-		    			Exams
+		    		<div name="Exams" ng-show="patientCtrl.isSelectedCreateConsultTab(3) && patientCtrl.inConsult" layout="column" flex="90">
+		    			<span ng-repeat="exam in patientCtrl.consultRequest.requestExams">{{exam.type}}</span>
+		    			<div layout="row">
+		    				<md-input-container>
+								<label translate="patient.examRequest"></label>
+								<input ng-model="patientCtrl.examRequest.type" title="{{'patient.examRequest'| translate}}" ></input>
+							</md-input-container>
+							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.orderExam(patient.examRequest)"> 
+						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-exam}}" style="fill: green"></ng-md-icon>
+						    </md-button>
+		    			</div>
 		    		</div>
 
-		    		<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab(4)" layout="column" flex="90">
-		    			Files
+		    		<div name="Files" ng-show="patientCtrl.isSelectedCreateConsultTab(4) && patientCtrl.inConsult" layout="column" flex="90">
+		    			<div layout="row" ng-hide="patientCtrl.isEmpty(patientCtrl.pendingExams)">
+			    			<md-input-container>
+			    				<md-select ng-model="patientCtrl.recieve" placeholder="{{ 'patient.sel-vitalsign' | translate }}">
+				    				<md-option ng-value="exam" ng-repeat="exam in patientCtrl.pendingExams">
+										{{ exam.type }}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.orderExam(patient.examRequest)"> 
+						    	<ng-md-icon icon="file_upload" aria-label="{{patient.upload-file}}" style="fill: gray"></ng-md-icon>
+						    </md-button>
+							<md-button class="md-icon-button md-raised" ng-click="patientCtrl.orderExam(patient.examRequest)"> 
+						    	<ng-md-icon icon="add_circle_outline" aria-label="{{patient.add-exam}}" style="fill: green"></ng-md-icon>
+						    </md-button>
+		    			</div>
+		    			<span ng-show="patientCtrl.isEmpty(patientCtrl.pendingExams)" translate="patient.no-pending-exams"></span>
 		    		</div>
 
 			    </ng-form>
@@ -218,24 +247,40 @@
 		</div>
 		<br>
 		<br>
+
+
 		<!-- Historial de consultas -->
 		<div layout="row" layout-align="center center">
 			<div layout="column" lauoyt-align="center center">
-				<strong translate="patient.previous-consults"></strong>
+				<h1 translate="patient.previous-consults"></h1>
 			</div>
 		</div>
 		<div layout="row" ng-repeat="consult in patientCtrl.consults | orderBy:'-consultDate'" layout-align="center center">
-			<div layout="column" layout-align="center start" flex="50">
-				<p><strong translate="patient.date"></strong>: {{ consult.consultDate | date:'dd/MM/yyyy' }}</p>
-				<strong translate="patient.diagnostics" ng-show="{{consult.diagnostics}}"></strong> 
-				<div ng-repeat="diagnostic in consult.diagnostics | orderBy:'details'">
-					{{diagnostic.details}}
+			<div layout="column" layout-align="center center" flex="80">
+				<h2>
+					<span translate="patient.date"></span>: {{ consult.consultDate | date:'dd/MM/yyyy' }}. {{'consult.date-been' | translate}} 
+					<span ng-show="patientCtrl.checkDate(consult.old.years)"> 
+						{{consult.old.years}} {{'consult.date-years' | translate}}
+					</span>
+					<span ng-show="patientCtrl.checkDate(consult.old.months) && !patientCtrl.checkDate(consult.old.years)">
+						{{consult.old.months}} {{'consult.date-months' | translate}}
+					</span>
+					<span ng-show="patientCtrl.checkDate(consult.old.days) && !patientCtrl.checkDate(consult.old.years) && !patientCtrl.checkDate(consult.old.months)">
+						{{consult.old.days}} {{'consult.date-days' | translate}}
+					</span>
+					<span ng-show="patientCtrl.checkDate(consult.old.hours)&& !patientCtrl.checkDate(consult.old.years)&& !patientCtrl.checkDate(consult.old.months) && !patientCtrl.checkDate(consult.old.days)">
+						{{consult.old.hours}} {{'consult.date-hours' | translate}}
+					</span>
+					<span ng-show="!patientCtrl.checkDate(consult.old.hours)&& !patientCtrl.checkDate(consult.old.years)&& !patientCtrl.checkDate(consult.old.months) && !patientCtrl.checkDate(consult.old.days)">
+						{{'consult.date-minutes' | translate}}
+					</span>
+				</h2>
+				<div ng-include="'app/consult/consultPopup.html'">
 				</div>
-				<span translate="patient.no-diagnostics" ng-hide="{{consult.diagnostics}}"></span>
 			</div>
-			<md-button class="md-icon-button md-raised" ng-click="patientCtrl.goToConsult($index)">
+			<!--md-button class="md-icon-button md-raised" ng-click="patientCtrl.goToConsult($index)">
 		    	<ng-md-icon icon="search" aria-label="Open Chat"></ng-md-icon>
-		    </md-button>
+		    </md-button-->
 		</div>
 	</div>
 </div>
