@@ -2,7 +2,6 @@
 <md-content ng-controller="HomeController as home" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-      	
         <div flex>
 	        <a ui-sref="home.main">
 	          <span>HxPlus </span>
@@ -18,17 +17,17 @@
             <span translate>home-bar.doctor</span>
           </a>
         </div>      	
-        <span flex></span>
+        <span flex="50"></span>
 
         <!-- Administración de Perfil -->
-          <div flex>
+          <div flex="10">
           	<a ui-sref="home.userProfile" ui-sref-opts="{id: home.user.id}">
           		<span>{{home.user.firstName}} {{home.user.lastName}}</span>
           	</a>   
           </div>    
 
         <!-- Menu Sttings -->
-        <div layout="column" layout-align="center center">
+        <div layout="column" layout-align="center center" flex="5">
           <md-menu md-position-mode="target-right target">
             <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
               <ng-md-icon icon="settings" style="fill: white"></ng-md-icon>

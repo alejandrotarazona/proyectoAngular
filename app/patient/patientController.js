@@ -1,5 +1,6 @@
 (function(){
 	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope,$mdDialog,$sce,
+		
 		DoctorRepository,
 		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DiagnosticRepository, DrugRepository, VitalSignRepository, ExamRepository,
 		SoapNoteRepository, InstructionRepository, PrescriptionRepository, IndicationRepository, FileRepository
@@ -9,8 +10,9 @@
 
 		this.inConsult = false;
 		this.createConsultTab = 1;
-
 		this.otherOps = false;
+		
+
 
 		this.defaultImg = {
 			url : '/resource/images/nophotouploaded.png'
@@ -30,13 +32,15 @@
 						consult.diagnostics = diagnostics;
 					});
 
-					consult.soapnote = SoapNoteRepository.soapnote.get({idSoapNote:consult.id});
+					SoapNoteRepository.soapnote.get({idSoapNote:consult.id}).$promise.then(function(soapnote){
+						consult.soapnote = soapnote;
+					});
 					consult.vitalsigns = VitalSignRepository.vitalSignByConsult.query({idConsult:consult.id});
 					//console.log(consult.vitalsigns);
 					consult.instructions = InstructionRepository.instructionByConsult.query({idConsult:consult.id});
-					console.log("instructions");
+					/*console.log("instructions");
 					console.log(consult.instructions);
-
+*/
 					PrescriptionRepository.prescriptionByConsult.query({idConsult:consult.id}).$promise.then(function(data){
 						data.forEach(function(prescription){
 							prescription.indication = IndicationRepository.indicationByPrescription({idPrescription: prescription.id});
@@ -87,7 +91,9 @@
 		};
 
 		this.isEmpty = function(list){
-			if(list === undefined) return true;
+			if(list === undefined || list === null) return true;
+			if(list === "") return true;
+			if(list === {}) return true;
 			return (list.length <= 0);
 		};
 
@@ -123,7 +129,11 @@
 			global.consultRequest.prescriptions = [];
 			global.consultRequest.vitalsigns = [];
 			global.consultRequest.requestExams = [];
-			global.pendingExams = ExamRepository.examPendingByPatient.query({idPatient:$stateParams.idPatient});	
+			global.consultRequest.recieveExams = [];
+			ExamRepository.examPendingByPatient.query({idPatient:$stateParams.idPatient}).$promise.then(function(list){
+				console.log(list);
+				global.pendingExams = list;
+			});	
 		};
 
 		this.setCreateConsultTab = function(setTab){
@@ -209,26 +219,14 @@
 		};
 
 		this.addVitalSign = function(){
-			//console.log("En addVitalSign");
 
 			if(global.vitalsign.name2 != null){
-			//	console.log("En el 1er if");
-			//	console.log("name2:");
-			//	console.log(global.vitalsign.name2);
-				
 				global.hideOther(global.vitalsign.name2);
-			} else {
-				console.log("No entró al primer if");
-			};
+			}
 
 			if(global.vitalsign != null && global.vitalsign.name != null && global.vitalsign.description != null){
-				//console.log("En el 2do if");
-				//console.log("vitalsign:");
-				//console.log(global.vitalsign);
 				global.consultRequest.vitalsigns.push(global.vitalsign);
 				global.vitalsign = null;
-			} else {
-				console.log("No entró al segundo if");
 			}
 		};
 
@@ -239,6 +237,39 @@
 		this.orderExam = function(exam){
 			global.consultRequest.requestExams.push(global.examRequest);
 			global.examRequest = null;
+		};
+
+		$scope.add = function(){
+			var f = document.getElementById('file').files[0],
+		    r = new FileReader(),
+		    file = {};
+
+		    file.fileName = f.name;
+
+			console.log("f.name");
+			console.log(f.name);
+
+			r.onloadend = function(e){
+		    	file.file = e.target.result;
+		    	FileRepository.file.save(file).$promise.then(function(uploadedFile){
+		    		var exam = {};
+		    		exam = global.recieve;
+		    		exam.results = uploadedFile;
+		    		global.consultRequest.recieveExams.push(exam);
+		    		global.pendingExams.splice(global.pendingExams.indexOf(exam),1);
+		    		global.recieve = null;
+		    	});
+			};
+
+			r.readAsBinaryString(f);
+
+		}
+
+		this.recieveExam = function(exam){
+			console.log("Exam");
+			console.log(exam);
+			global.consultRequest.recieveExams.push(exam);
+			global.recieve = null;
 		};
 
 		//---------------------- Consultas --------------------------//

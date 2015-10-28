@@ -189,6 +189,7 @@
 		"subjective"		: "¿Qué dijo el paciente?",
 		"objective"			: "¿Qué se pudo observar?",
 		"plan"				: "@:patient.plan",
+		"no-plan"			: "No se planificó ningún tratamiento",
 		"comments"			: "@:patient.comments",
 		"diagnostics"		: "@:patient.diagnostics",
 		"no-diagnostics"	: "@:patient.no-diagnostics",
@@ -205,7 +206,7 @@
 
 		"exams-tab"			: "Exámenes ordenados:",
 		"no-exams-ordered"	: "No se ordenaron exámenes",
-		"download"			: "Descargar Examen",
+		"download"			: "Descargar",
 
 		"files-tab"			: "Exámenes recibidos:",
 		"no-exams-recieved"	: "No se recibieron exámenes",
@@ -218,6 +219,8 @@
 		"date-months"		: "mes(es)",
 		"date-days"			: "día(s)",
 		"date-hours"		: "hora(s)",
-		"date-minutes"		: "menos de una hora"
+		"date-minutes"		: "menos de una hora",
+
+		"inform"			: "Generar informe médico"
 	}
 }

@@ -1,5 +1,6 @@
-<div layout="row"  layout-margin layout-fill layout-padding layout-align="center center" flex="100">
-	<div layout="column" flex="100" layout-align="center center">
+<div layout="row"  layout-margin layout-fill layout-padding layout-align="center center">
+
+	<div layout="column" layout-align="center center">
 		
 		<div layout="row" layout-align="center center">
     		<md-button class="md-raised" ng-disabled="patientCtrl.isSelectedInConsultTab($index,1)" ng-click="patientCtrl.setInConsultTab($index,1)">
@@ -13,9 +14,10 @@
     		</md-button>
     	</div>
 
-    	<div layout="row"  layout-align="space-around center">
+    	<div layout="row">
 
-    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" layout="column" flex="50" layout-align="start start">
+    		<div name="Resume" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" layout="column" flex="50" layout-align="start start"
+    		flex-order="1">
 
 				<strong translate="consult.subjective"></strong>
 				<span>{{consult.soapnote.subjective}}</span>
@@ -32,14 +34,15 @@
 
 				<strong translate="consult.plan"></strong>
 				<span>{{consult.soapnote.plan}}</span>
+				<span ng-show="patientCtrl.isEmpty(consult.soapnote.plan)">{{'consult.no-plan' | translate}}</span>
 				<br>
 				
 				<strong translate="consult.comments"></strong>
 				<span> {{consult.soapnote.comments}} </span>
-				<br>
 			</div>
 
-			<div layout="column" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" layout-align="start start" flex="50">
+			<div layout="column" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" 	layout-align="start start" flex="50"
+			flex-order="2" offset="10">
 				<strong translate="consult.prescriptions"></strong>
 				<li ng-repeat="prescription in consult.prescriptions">
 					<strong>{{prescription.drug.name}}</strong>
@@ -65,8 +68,8 @@
 
 				<div name="Files" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" layout="column" flex="100">
 					<strong translate="consult.files-tab"></strong>
-					<div layout="row" layout-align="space-between start" ng-repeat="exam in consultCtrl.consult.examRecieved">
-						<li><strong>{{exam.type}}</strong></li>
+					<div layout="row" layout-align="space-between center" ng-repeat="exam in consult.examRecieved">
+						<li>{{exam.type}}</li>
 						<md-button class="md-raised" aria-label="{{ consult.download | translate}}" ng-click="consultCtrl.download(exam.file)">
 							<span translate="consult.download"></span>
 							<ng-md-icon icon="file_download" style="fill: gray">
@@ -76,14 +79,19 @@
 					<li ng-show="patientCtrl.isEmpty(consult.examRecieved)" translate="consult.no-exams-recieved"></li>
 				</div>	
 			</div>
-			<br>
 
 			<div name="Vitals" ng-show="patientCtrl.isSelectedInConsultTab($index,2)" layout="column" flex="100">
-				<div ng-repeat="vitalsign in consult.vitalsigns | orderBy:'name'">
-					<strong>{{vitalsign.name}}: </strong>
-					<span>{{vitalsign.description}}</span>
-				</div>
+				<table style="width:100%">
+				<tr ng-repeat="vitalsign in consult.vitalsigns | orderBy:'name'">
+					<td><strong>{{vitalsign.name}}: </strong></td>
+					<td><span>{{vitalsign.description}}</span></td>
+				</tr>
+				</table>
 				<span ng-show="patientCtrl.isEmpty(consult.vitalsigns)" translate="consult.no-vitalsigns"></span>
+			</div>
+
+			<div name="Inform" ng-show="patientCtrl.isSelectedInConsultTab($index,3)" layout="column" flex="100">
+				{{'consult.inform' | translate}}
 			</div>
     	</div>
 	</div>
