@@ -177,6 +177,7 @@
 		"add-exam"			: "Agregar un nuevo examen",
 		"files-tab"			: "Recibir Exámenes",
 		"no-pending-exams"	: "No posee exámenes pendientes",
+		"select-file"		: "Elija un archivo",
 		"upload-file"		: "Subir archivo",
 		"previous-consults" : "Consulta(s) previa(s)",
 		"date"				: "Fecha",

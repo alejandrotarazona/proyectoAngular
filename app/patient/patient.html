@@ -203,7 +203,19 @@
 		    		</div>
 
 		    		<div name="Exams" ng-show="patientCtrl.isSelectedCreateConsultTab(3) && patientCtrl.inConsult" layout="column" flex="90">
-		    			<li ng-repeat="exam in patientCtrl.consultRequest.requestExams | orderBy:'type'">{{exam.type}}</li>
+		    			<table>
+			    			<tr ng-repeat="exam in patientCtrl.consultRequest.requestExams | orderBy:'type'">
+			    				<td>
+			    					<li>{{exam.type}}</li>
+			    				</td>
+			    				<td>
+					    			<md-button class="md-icon-button md-raised" ng-click="patientCtrl.delOrderExam($index)">
+					    				<ng-md-icon icon="clear" aria-label="{{'patient.del-prescription'| translate}}" style="fill: red"></ng-md-icon>
+					    			</md-button>
+			    				</td>
+			    			</tr>
+		    			</table>
+	    
 		    			<div layout="row">
 		    				<md-input-container>
 								<label translate="patient.examRequest"></label>
@@ -228,7 +240,7 @@
 								</md-select>
 							</md-input-container>
 							<md-input-container ng-model="patientCtrl.recieve.results">
-						    	<input type="file" id="file" name="file"/>
+						    	<input type="file" id="file" name="file" aria-label="{{ 'patient.select-file' | translate }}"/>
 							</md-input-container>
 							<md-button class="md-icon-button md-raised" ng-click="add()"> 
 						    	<ng-md-icon icon="file_upload" aria-label="{{patient.upload-file}}" style="fill: green"></ng-md-icon>
