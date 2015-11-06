@@ -4,11 +4,8 @@
 		<!-- Info básica -->
 		<div layout="row" layout-margin layout-fill layout-padding layout-align="space-between start">
 			<div layout-align="start end" flex="20">
-				<img alt="{{ patientCtrl.patient.photo }}" ng-src="{{ patientCtrl.patient.photo }}" class="md-avatar">
-				<strong>FOTO</strong>
 				<div ng-hide="patientCtrl.patient.photo">
-					<img ng-src="{{ defaultImg.url }}"  class="md-avatar">
-					<strong>NO-FOTO</strong>
+					<img class="photo" data-ng-src="http://localhost:8080/occupational/file/getImage/3" height="300" width="300">
 				</div>
 			</div>
 			<div layout="column" layout-align="center center" flex="60">
