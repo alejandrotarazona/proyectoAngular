@@ -3,7 +3,9 @@
 		
 		DoctorRepository,
 		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DiagnosticRepository, DrugRepository, VitalSignRepository, ExamRepository,
-		SoapNoteRepository, InstructionRepository, PrescriptionRepository, IndicationRepository, FileRepository
+		SoapNoteRepository, InstructionRepository, PrescriptionRepository, IndicationRepository, FileRepository,
+
+		downloadRepository
 		){
 		
 		var global = this;
@@ -312,19 +314,7 @@
 			return value > 0;
 		};
 
-		this.downloadFile = function(exam){
+		//---------------------- Generación de reportes ----------------------//
 
-
-/*
-				FileRepository.fileByExam.get({idExam:exam.id}).$promise.then(function(downloadedFile){
-					console.log("downloadedFile");
-					console.log(downloadedFile);
-					FileRepository.downloadFile.get({idFile:downloadedFile.id});
-
-				});
-*/			
-
-			
-		};
 	});
 })()
