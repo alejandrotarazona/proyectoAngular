@@ -41,7 +41,7 @@
 				<span> {{consult.soapnote.comments}} </span>
 			</div>
 
-			<div layout="column" ng-show="patientCtrl.isSelectedInConsultTab($index,1)" 	layout-align="start start" flex="50"
+			<div layout="column" ng-show="patientCtrl.isSelectedInConsultTab($index,1)"	layout-align="start start" flex="50"
 			flex-order="2" offset="10">
 				<strong translate="consult.prescriptions"></strong>
 				<li ng-repeat="prescription in consult.prescriptions">
@@ -92,6 +92,25 @@
 
 			<div name="Inform" ng-show="patientCtrl.isSelectedInConsultTab($index,3)" layout="column" flex="100">
 				{{'consult.inform' | translate}}
+				<div flex="50" flex-md="100" layout="column">
+					<div layout="row" layout-wrap>
+						<div flex="50" ng-repeat="item in patientCtrl.items">
+							<md-checkbox ng-checked="patientCtrl.exists(item, patientCtrl.selected,$index)" ng-click="patientCtrl.toggle(item, patientCtrl.selected, $index)">
+								{{ 'consult.' + item | translate }}
+							</md-checkbox>
+						</div>
+						<div layout="column" flex="50">
+							<li ng-repeat="selection in patientCtrl.selected | orderBy:selction">
+								{{ 'consult.' + selection | translate }}
+							</li>
+							<md-button class="md-raised" aria-label="{{ consult.download | translate}}" ng-click="patientCtrl.generateInform(patientCtrl.informRequest,consult)">
+								<span translate="consult.download"></span>
+								<ng-md-icon icon="file_download" style="fill: gray">
+								</ng-md-icon>
+							</md-button>
+						</div>
+					</div>
+				</div>
 			</div>
     	</div>
 	</div>

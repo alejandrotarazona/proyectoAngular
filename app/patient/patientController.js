@@ -1,11 +1,11 @@
 (function(){
-	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope,$mdDialog,$sce,
+	hxplus.controller('PatientController', function($state,$stateParams,$translate,$http,$scope,$mdDialog,$sce,$window,
 		
 		DoctorRepository,
 		PatientRepository, CostCenterRepository, PostRepository, ConsultRepository, DiagnosticRepository, DrugRepository, VitalSignRepository, ExamRepository,
 		SoapNoteRepository, InstructionRepository, PrescriptionRepository, IndicationRepository, FileRepository,
 
-		downloadRepository
+		DownloadRepository
 		){
 		
 		var global = this;
@@ -315,6 +315,45 @@
 		};
 
 		//---------------------- Generación de reportes ----------------------//
+		this.items = ["objective", "diagnostics", "plan", "comments"];
+		this.informRequest = {};
+		this.informRequest.consult = {};
+		this.informRequest.toPrint = [];
+		this.selected = [];
+
+		this.generateInform = function(informRequest, consult){
+			global.informRequest.consult.id = consult.id;
+			console.log(informRequest);
+
+			return DownloadRepository.pdfDownload.download({type:'inform'} , informRequest).$promise.then((data) => {
+              //using saveAs.js (part of upcoming HTML5 API, but so far a polyfill)
+              var blob = data.response.blob;
+ 
+              var fileName = data.response.fileName || 'document.pdf';
+              
+              var fileURL = URL.createObjectURL(blob);
+               
+              //SaveAs is available at saveAs.js from http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js
+              $window.open(fileURL);
+          });		
+		};
+
+		this.toggle = function (item, list, index) {
+			var idx = list.indexOf(item);
+			var idRequest = global.informRequest.toPrint.indexOf(item);
+
+			if (idx > -1) {
+				global.informRequest.toPrint.splice(idRequest,1);
+				list.splice(idx, 1);
+			} else {
+				global.informRequest.toPrint.push(item);
+				list.push(item);
+			}
+		};
+
+		this.exists = function (item, list, index) {
+			return list.indexOf(item) > -1;
+		};
 
 	});
 })()

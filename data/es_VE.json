@@ -222,6 +222,10 @@
 		"date-hours"		: "hora(s)",
 		"date-minutes"		: "menos de una hora",
 
-		"inform"			: "Generar informe médico"
+		"inform"			: "Generar informe médico",
+		"objective"			: "Exámen físico", 
+		"diagnostics"		: "Diagnóstico(s)", 
+		"plan"				: "Tratamiento", 
+		"comments"			: "Comentarios"
 	}
 }
