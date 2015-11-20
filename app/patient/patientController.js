@@ -28,6 +28,9 @@
 						consult.diagnostics = diagnostics;
 					});
 
+					consult.itemSelected = [];
+					consult.reportSelected = 1;
+
 					SoapNoteRepository.soapnote.get({idSoapNote:consult.id}).$promise.then(function(soapnote){
 						consult.soapnote = soapnote;
 					});
@@ -321,11 +324,11 @@
 		this.informRequest.toPrint = [];
 		this.selected = [];
 
-		this.generateInform = function(informRequest, consult){
+		this.generateInform = function(informRequest, consult, informType){
 			global.informRequest.consult.id = consult.id;
 			console.log(informRequest);
 
-			return DownloadRepository.pdfDownload.download({type:'inform'} , informRequest).$promise.then((data) => {
+			return DownloadRepository.pdfDownload.download({type:informType} , informRequest).$promise.then((data) => {
               //using saveAs.js (part of upcoming HTML5 API, but so far a polyfill)
               var blob = data.response.blob;
  
@@ -338,7 +341,7 @@
           });		
 		};
 
-		this.toggle = function (item, list, index) {
+		this.toggle = function (item, list) {
 			var idx = list.indexOf(item);
 			var idRequest = global.informRequest.toPrint.indexOf(item);
 
@@ -351,8 +354,16 @@
 			}
 		};
 
-		this.exists = function (item, list, index) {
+		this.exists = function (item, list) {
 			return list.indexOf(item) > -1;
+		};
+
+		this.isReportSelected = function(index, reportIndex){
+			return global.consults[index].reportSelected === reportIndex;
+		};
+
+		this.setReportSelected = function(index, reportIndex){
+			global.consults[index].reportSelected = reportIndex;
 		};
 
 	});

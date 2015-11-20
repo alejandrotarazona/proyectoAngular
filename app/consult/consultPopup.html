@@ -90,12 +90,20 @@
 				<span ng-show="patientCtrl.isEmpty(consult.vitalsigns)" translate="consult.no-vitalsigns"></span>
 			</div>
 
-			<div name="Inform" ng-show="patientCtrl.isSelectedInConsultTab($index,3)" layout="column" flex="100">
-				{{'consult.inform' | translate}}
-				<div flex="50" flex-md="100" layout="column">
-					<div layout="row" layout-wrap>
-						<div flex="50" ng-repeat="item in patientCtrl.items">
-							<md-checkbox ng-checked="patientCtrl.exists(item, patientCtrl.selected,$index)" ng-click="patientCtrl.toggle(item, patientCtrl.selected, $index)">
+			<div name="Inform" ng-show="patientCtrl.isSelectedInConsultTab($index,3)" layout="column" flex="100" layout-align="center center">
+				<div name="InformTabs" layout="row">
+					<md-button class="md-raised" aria-label="{{ consult.inform | translate}}" ng-click="patientCtrl.setReportSelected($index,1)">
+						<span translate="consult.inform"></span>
+					</md-button>
+					<md-button class="md-raised" aria-label="{{ consult.rest | translate}}" ng-click="patientCtrl.setReportSelected($index,2)">
+						<span translate="consult.rest"></span>
+					</md-button>
+				</div>
+				
+				<div flex="50" flex-md="100" layout="column" ng-show="patientCtrl.isReportSelected($index,1)">
+					<div layout="row" layout-wrap layout-align="center center">
+						<div flex="50" layout-align="center center" ng-repeat="item in patientCtrl.items">
+							<md-checkbox ng-checked="patientCtrl.exists(item, consult.itemSelected)" ng-click="patientCtrl.toggle(item, consult.itemSelected)">
 								{{ 'consult.' + item | translate }}
 							</md-checkbox>
 						</div>
@@ -103,13 +111,29 @@
 							<li ng-repeat="selection in patientCtrl.selected | orderBy:selction">
 								{{ 'consult.' + selection | translate }}
 							</li>
-							<md-button class="md-raised" aria-label="{{ consult.download | translate}}" ng-click="patientCtrl.generateInform(patientCtrl.informRequest,consult)">
+							<md-button class="md-raised" aria-label="{{ consult.download | translate}}" ng-click="patientCtrl.generateInform(patientCtrl.informRequest,consult,'inform')">
 								<span translate="consult.download"></span>
 								<ng-md-icon icon="file_download" style="fill: gray">
 								</ng-md-icon>
 							</md-button>
 						</div>
 					</div>
+				</div>
+
+				<div name="Rest" ng-show="patientCtrl.isReportSelected($index,2)">
+					<span> {{ 'consult.rest-prefix' | translate }} </span>
+					<md-input-container size="4">
+						<input ng-model="patientCtrl.informRequest.restDays" type="number" aria-label="{{ consult.days | translate}}" size="3" ng-maxlength="3">
+					</md-input-container>
+					<span> {{ 'consult.rest-suffix' | translate }} </span>
+
+					<br>
+
+					<md-button class="md-raised" aria-label="{{ consult.download | translate}}" ng-click="patientCtrl.generateInform(patientCtrl.informRequest,consult,'rest')">
+						<span translate="consult.download"></span>
+						<ng-md-icon icon="file_download" style="fill: gray">
+						</ng-md-icon>
+					</md-button>
 				</div>
 			</div>
     	</div>

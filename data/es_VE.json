@@ -223,6 +223,10 @@
 		"date-minutes"		: "menos de una hora",
 
 		"inform"			: "Generar informe médico",
+		"rest"				: "Generar reposo médico",
+		"rest-prefix"		: "El empleado tiene un reposo de ",
+		"days"				: "Días",
+		"rest-suffix"		: " días a partir del día de la consulta",
 		"objective"			: "Exámen físico", 
 		"diagnostics"		: "Diagnóstico(s)", 
 		"plan"				: "Tratamiento", 
